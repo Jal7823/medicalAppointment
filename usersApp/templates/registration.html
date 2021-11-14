@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+
+      <div class="container">
+        <div class="container-fluid">
+          <div class="row main-content bg-success text-center">
+            <div class="col-md-4 text-center company__info">
+              <img src="{% static 'img/logo.png' %}" alt="">
+              <h4 class="company_title">Urgencias Medical Care</h4>
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+              <div class="container-fluid">
+                <div class="row mt-4">
+                  <h2>Registro</h2>
+                </div>
+                <div class="row">
+                  <form control="" class="form-group" method='POST'>
+                    {% csrf_token %}
+                      {{form | crispy}}
+                    <div class="row d-flex justify-content-center mt-2">
+                      <input type="checkbox" name="remember_me" id="remember_me" class="">
+                      <span for="remember_me">Recuerdame!</span>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                      <input type="submit" value="Iniciar sesion" class="btn">
+                    </div> 
+                  </form>
+                </div>
+                <div class="row">
+                  <p>No tienes cuenta? <a href="{% url 'registro' %}">Registrate!</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      {% endblock %}

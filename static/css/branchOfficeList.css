@@ -1,0 +1,47 @@
+:root{
+    --firtsColor:#E6203A;
+    --w:#fff;
+}
+
+
+
+.text-colored{
+    color: var(--firtsColor);
+}
+
+.jumbotron > h1{
+    font-weight: bold;
+    border-bottom: 1px solid var(--firtsColor);
+}
+
+
+.ul-descriptions{
+    list-style-type: none;
+}
+
+.ul-descriptions > h5{
+    margin-top: 1rem;
+}
+
+
+.fa-user-md{
+    color: var(--w);
+    background:var(--firtsColor);
+    padding: .5rem;
+    border-radius: 50%;
+    
+}
+.info-medic{
+    margin-top: 1rem;
+}
+
+.specialty-medic{
+    color: var(--firtsColor);
+}
+
+
+.img-bo{
+    width:600px;
+    height:auto;
+}
+

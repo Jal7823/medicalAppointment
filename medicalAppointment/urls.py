@@ -26,6 +26,7 @@ urlpatterns = [
     path('doctors/', include('doctors.urls')),
     path('branchOffices/', include('branchOffices.urls')),
     path('appointment/', include('appointment.urls')),
+    path('users/', include('usersApp.urls')),
     path('',index,name='index')
 ]+ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -15,24 +15,12 @@
 
 
 <div class="container">
-    <div class="d-flex justify-content-center">
-        <form class='w-50'>
+    <div class="d-flex justify-content-center"  >
+        <form class='w-50' method='POST' >
             {% csrf_token %}
-            <label for="exampleFormControlInput1" class="form-label">Especialidad</label>
-            <select class="form-select" aria-label="Default select example">
-                <option value="{{form.specialty}}"></option>
-            </select>
-    
-    
-            <label for="exampleFormControlInput1" class="form-label">Sucursales</label>
-            <select class="form-select" aria-label="Default select example">
-                <option value="{{form.branchOffices}}"></option>
-            </select>
-    
-            <label for="inputPassword5" class="form-label">Fecha</label>
-            <input type="date" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-    
-            <input type="submit" class="btn btn-danger mt-2">
+                {{form | crispy}}
+            <input class="btn btn-danger w-100" type='submit' value="Registrar cita">
+
         </form>
     
     </div>

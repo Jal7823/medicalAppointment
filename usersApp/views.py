@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib.auth.views import LoginView,LogoutView
+from django.shortcuts import render,redirect
+from .forms import CustomUserCreationForm
 
 
 class LoginFromView(LoginView):
@@ -6,7 +8,7 @@ class LoginFromView(LoginView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('index')
+            return redirect(to='index')
 
             
         return super().dispatch(request, *args, **kwargs)
@@ -19,6 +21,7 @@ class LoginFromView(LoginView):
 def registro(request):
     data = {
         'form':CustomUserCreationForm()
+        
     }
 
     if request.method =='POST':
@@ -33,9 +36,9 @@ def registro(request):
 
         data ['form'] = formulario 
         messages.error(request,'algo fallo en la suscripcion')
-    return render(request,'usuarios/registration.html',data)
+    return render(request,'usersApp/registration.html',data)
 
-class logout(LoginView):
+class LogoutView(LogoutView):
     pass
 
 def formulario(request):
@@ -49,5 +52,3 @@ def formulario(request):
         form = CustomUserCreationForm()
 
     return render(request,'registration.html',{'form':form})
-
-

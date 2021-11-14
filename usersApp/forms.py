@@ -44,7 +44,7 @@ class CustomUserCreationForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ('username','email','password1','password2','nombre','apellido','dni','direc','loc','pcia','tlf','transp')
+        fields = ('username','email','password1','password2','name','lastName','dni','direc','loc','pcia','tlf')
 
     def save(self,commit=True):
         '''
