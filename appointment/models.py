@@ -5,6 +5,9 @@ from branchOffices.models import BranchOffices
 
 
 class Appointment(models.Model):
+    name = models.CharField('Nombre', max_length=100,null=True,blank=True)
+    lastName = models.CharField('Apellido', max_length=100,null=True,blank=True)
+    dni = models.IntegerField('DNI',null=True,blank=True)
     specialty = models.ForeignKey(Specialty, on_delete=models.CASCADE)
     date = models.DateField()
     branchOffices = models.ForeignKey(BranchOffices, on_delete=models.CASCADE,null=True,blank=True)
