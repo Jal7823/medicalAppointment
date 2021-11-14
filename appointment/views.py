@@ -1,6 +1,10 @@
 from django.shortcuts import render,redirect
+from django.views.generic import DetailView,ListView
+from django.db.models import Q
+
 from .forms import formsAppointment
 from .models import Appointment
+from django.contrib.auth.models import User
 
 
 def appointment(request):
@@ -21,8 +25,19 @@ def appointment(request):
         'title':title,
     }
 
-
-
-
-
     return render(request, 'appointment/appointment.html',context)
+
+# def AppointmentDetail(request):
+#     userActive = User.id
+#     appointment = Appointment.objects.get(
+#         Q(id=userActive),
+#     )    
+
+#     context = {
+#         'appointment':appointment,
+#     }
+#     print('==>',userActive)
+
+#     return render(request,'appointment/appointmentDetail.html',context)
+
+    

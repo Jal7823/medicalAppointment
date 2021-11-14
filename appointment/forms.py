@@ -1,5 +1,8 @@
 from django import forms
 from .models import Appointment
+from django.contrib.auth.models import User
+from usersApp.models import Usuario
+
 
 
 
@@ -11,3 +14,4 @@ class formsAppointment(forms.ModelForm):
         widgets = {
             'date':forms.DateInput(),
         }
+
