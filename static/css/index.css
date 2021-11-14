@@ -1,0 +1,39 @@
+:root{
+    --firtsColor:#E6203A;
+    --w:#fff;
+}
+
+.infoIcon{
+    font-size:50px;
+    color: var(--firtsColor);
+    
+}
+
+.img-slider{
+    object-fit:cover;
+}
+
+
+.img-size{
+    width: 600px;
+    height:auto;
+    box-shadow: 1px 1px 6px var(--firtsColor);
+    height: 400px;
+
+}
+.img-size:hover{
+    filter: saturate(190%);
+
+}
+
+.bofic-card{
+    width:500px;
+    transform: translateY(-50px);
+}
+
+
+.card-container{
+    border:0;
+    border-left:0;
+}
+

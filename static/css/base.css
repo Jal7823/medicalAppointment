@@ -1,0 +1,74 @@
+/* Globals */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+:root{
+    --firtsColor:#E6203A;
+    --secondsColor:#33287C;
+}
+
+
+
+a{
+    text-decoration: none;
+    color: var(--secondsColor);
+}
+
+
+/* /Globals */
+
+
+.logo{
+    width: 150px;
+    height: auto;
+    padding:1rem;
+}
+
+
+/* branchOddices */
+.img-sucursal{
+    object-fit: contain;
+}
+
+
+/* docs */
+.img-doc{
+    width:auto;
+    
+    object-fit: contain;
+}
+
+
+
+.nav-container{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+
+.footer{
+    position:absolute;
+    bottom:0;
+    width: 100%;
+}
+
+.footer-conatiner{
+    background:var(--firtsColor)
+}

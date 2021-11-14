@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center text-colored text-danger">{{title}}</h1>
+</div>            
+
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <form class='w-50'>
+            {% csrf_token %}
+            <label for="exampleFormControlInput1" class="form-label">Especialidad</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="{{form.specialty}}"></option>
+            </select>
+    
+    
+            <label for="exampleFormControlInput1" class="form-label">Sucursales</label>
+            <select class="form-select" aria-label="Default select example">
+                <option value="{{form.branchOffices}}"></option>
+            </select>
+    
+            <label for="inputPassword5" class="form-label">Fecha</label>
+            <input type="date" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+    
+            <input type="submit" class="btn btn-danger mt-2">
+        </form>
+    
+    </div>
+</div>
+
+      
+{% endblock %}
