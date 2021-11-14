@@ -24,6 +24,11 @@ body{
     min-height: 100vh;
 }
 
+.contenedor{
+    margin-bottom: 6rem;
+}
+
+
 
 /* /Globals */
 
