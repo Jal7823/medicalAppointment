@@ -22,29 +22,59 @@
             <ul class="ul-descriptions">
                 <li><strong>Direccion:</strong> {{object.address}}</li>
                 <li><strong>Telefono:</strong> {{object.phone}}</li>
-                <h5>Especialidades</h5>
-
-
-                    {% for s in object.doctors.all %}
-                        <li class="info-medic"><i class="fas fa-user-md"></i> 
-                            Dr.{{s.name}} {{s.lastName}} / 
-                            {% for m in s.specialty.all %}
-                                <span class="specialty-medic">{{m.name}}</span>
-                            {% endfor %}
-                        </li>
-                    {% endfor %}
             </ul>
+            <div class="">
+                <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
+            </div>
         </div>
 
             <div class="col-6">
                 <img class="rounded img-top img-bo" src="{{object.image.url}}" alt="">
             </div>
-        <div class="">
-            <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
-        </div>
     </div>
     <!-- firts row -->
+
+
+    <!-- secoond rows -->
+    <div class="divisor d-flex align-items-center">
+        <hr class="ml-4 text-danger">
+        <h6 class='text-center text-separator'>Doctores de Sucursal</h6>
+        <hr class="mr-4 text-danger">
+    </div>
+
+    <!-- /secoond rows -->
+
+    <!-- doctors -->
+    <div class="container">
+        <div class="row d-flex ">
+            {% for s in object.doctors.all %}
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="card mb-3 ml-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{s.image.url}}" class="img-fluid rounded-start">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Dr.{{s.name}} {{s.lastName}}</h5>
+                          {% for m in s.specialty.all %}
+                          <p class="card-text">Especialidad: <span class="text-danger">{{m.name}}</span></p>
+                          <p class="card-text"><small class="text-muted">Nro. de Medico: {{s.medicalNumber}}</small></p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %} 
+        </div>
+    </div>      
+    
+
+    <!-- /doctors -->
+
 </div>
 
-      
+
+
 {% endblock %}

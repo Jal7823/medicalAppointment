@@ -43,6 +43,8 @@
 .img-bo{
     width:600px;
     height:auto;
+    clip-path: polygon(0 0, 75% 0%, 100% 50%, 100% 100%, 25% 100%, 0% 50%);
+
 }
 
 .contenedor{

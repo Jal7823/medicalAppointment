@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_bootstrap5",
     'ckeditor',
+    'tempus_dominus',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'medicalAppointment.urls'
+
+TEMPUS_DOMINUS_LOCALIZE=True
+TEMPUS_DOMINUS_INCLUDE_ASSETS=True
 
 TEMPLATES = [
     {

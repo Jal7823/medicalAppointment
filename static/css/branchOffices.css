@@ -33,6 +33,8 @@
 }
 .info-medic{
     margin-top: 1rem;
+    list-style: none;
+    margin-left: 2rem;
 }
 
 .specialty-medic{
@@ -43,9 +45,26 @@
 .img-bo{
     width:600px;
     height:auto;
+    clip-path: polygon(0 0, 75% 0%, 100% 50%, 100% 100%, 25% 100%, 0% 50%);
+    border-radius: 3px 0px 3px 0px;
+    box-shadow: 1px 1px 6px var(--firtsColor);
 }
+
 
 
 .contenedor{
     margin-bottom: 6rem;
+}
+
+hr{
+    width: 50%;
+}
+
+.img-doctors{
+    width:180px;
+    object-fit: contain;
+}
+
+.text-separator{
+    border: 1px 1px 0px 1px solid var(--firtsColor);
 }

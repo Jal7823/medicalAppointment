@@ -109,101 +109,6 @@
 
 
 
-<!-- /contact info -->
-
-<!-- info Navbar -->
-<!-- <nav class="container-fluid ">
-  <div class="nav nav-tabs" id="nav-tab " role="tablist">
-    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Sucursales</button>
-    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Especialidades</button>
-    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Equipo Medico</button>
-  </div> -->
-
-<!-- info Navbar -->
-
-
-
-
-<!-- <div class="tab-content" id="nav-tabContent "> -->
-
-  <!-- branchOffices -->
-  <!-- <div class="tab-pane fade show active p-2" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-    <div class="d-flex justify-content-around">
-      {% for b in branchOffices  %}
-      <div class="card" style="width: 18rem;">
-        
-        {% if b.image %}
-          <a href="{% url 'detail' b.id %}" class=""><img  src="{{b.image.url}}" class="card-img-top " ></a>
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{b.name}}</h5>
-          <p class="card-text">Direccion: {{b.address}}</p>
-          <p class="card-text">Telefono:{{b.phone}}</p>
-          <div class="d-flex justify-content-center">
-            <a href="{% url 'detail' b.id %}" class="btn btn-primary text-center">Ver sucursal</a>
-
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-
-
-    </div>
-    
-  </div> -->
-  <!-- branchOffices -->
-
-
-  <!-- specialty -->
-
-  <!-- <div class="tab-pane fade p-2" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-
-    <div class="d-flex justify-content-around align-items-center">
-      {% for s in specialty  %}
-        <ul>
-          <li style='list-style: none;'>{{s.name}}</li>
-        </ul>
-      {% endfor %}
-
-    </div>
-
-  </div> -->
-
-  <!-- specialty -->
-
-
-  <!-- doctors -->
-
-  <!-- <div class="tab-pane fade p-2" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-    <div class="d-flex justify-content-around">
-      {% for d in doctors  %}
-      <div class="card" style="width: 18rem;">
-        {% if d.image %}
-        <img  src="{{d.image.url}}" class="card-img-top img-doc" alt="...">
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{d.name}} {{d.lastName}}</h5>
-          <p class="card-text">
-            {% for s in d.specialty.all %}
-              {{s.name}}
-            {% endfor %}
-
-          </p>
-        </div>
-      </div>
-      {% endfor %}
-
-
-    </div>
-    
-
-  </div> -->
-<!-- </div> -->
-  <!-- doctors -->
-
-<!-- </nav> -->
-<!-- /info Navbar -->
 <hr>
 
 <!-- office -->
@@ -214,7 +119,7 @@
     <div class="col-md-6 ml-4">
         <a href="{% url 'detail' b.id %}"><img src="{{b.image.url}}" class="img-size" ></a>
         <div class="card d-flex m-auto bofic-card">
-          <div class="card-title h4 text-center text-danger p-4">{{b.name}}</div>
+          <a href="{% url 'detail' b.id %}"><div class="card-title h4 text-center text-danger p-4">{{b.name}}</div></a>
           <div class="card-description text-justify p-4 bofic-descriptions">{{b.description}}</div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Appointment
 from django.contrib.auth.models import User
+from tempus_dominus.widgets import DatePicker, TimePicker, DateTimePicker
 from usersApp.models import Usuario
 
 
@@ -10,7 +11,10 @@ class formsAppointment(forms.ModelForm):
         fields = '__all__'
         widgets = {
             
-            'date':forms.DateInput(attrs={'type': 'date'})
+            'date':forms.DateInput(attrs={
+                'type': 'date',
+                'class':'datetimepicker-input',
+            }),
         }
         labels = {
             'specialty':'Especialidad',

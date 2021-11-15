@@ -8,6 +8,13 @@
 
 
 {% block content %}
+<!-- tempus -->
+<script src="{% static 'lib/moment/moment.js' %}" ></script>
+<script src="{% static 'lib/tempus/tempusdominus-bootstrap-4.min.js' %}" ></script>
+<link rel="stylesheet" href="{% static 'lib/tempus/tempusdominus-bootstrap-4.min.css' %}">
+
+<!-- /tempus -->
+
 
 <div class="jumbotron">
     <h1 class="display-4 text-center text-colored text-danger">{{title}}</h1>
@@ -24,5 +31,11 @@
     </div>
 </div>
 
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
       
 {% endblock %}
