@@ -1,12 +1,16 @@
 from django.shortcuts import render,redirect
 from django.views.generic import DetailView,ListView
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 from .forms import formsAppointment
 from .models import Appointment
 from django.contrib.auth.models import User
 
 
+
+
+@login_required(login_url='login')
 def appointment(request):
     appointment = Appointment.objects.all()
     title = 'Citas Medicas'
