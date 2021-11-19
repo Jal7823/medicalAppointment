@@ -42,7 +42,7 @@
                       <a class="nav-link" href="{% url 'branchOffices' %}">Sucursales</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Conocenos</a>
+                      <a class="nav-link" href="{% url 'about' %}">Conocenos</a>
                   </li>
                   {% if user.is_authenticated %}
                   <li class="nav-item d-flex">

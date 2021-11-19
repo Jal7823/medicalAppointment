@@ -38,3 +38,11 @@ def detailSpecialty(request,id):
     print(branchOffices)
 
     return render(request, 'branchOffices/specialtyFilter.html',context)
+
+
+def about(request):
+    title = 'Sobre nosotros'
+    context = {
+        'title':title,
+    }
+    return render(request, 'about.html',context)
