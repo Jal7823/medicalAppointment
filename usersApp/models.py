@@ -96,6 +96,10 @@ class Usuario(AbstractUser):
     def is_staff(self):
         return self.user_administrator
 
+    @property
+    def is_superuser(self):
+        return self.user_administrator
+
     def get_image(self):
         if self.image:
             return '{}{}'.format(MEDIA_URL, self.image)
