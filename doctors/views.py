@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from branchOffices.models import BranchOffices
-from doctors.models import Specialty,Doctor
-from branchOffices.models import BranchOffices
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db.models import Q
+from django.shortcuts import render
+
+from branchOffices.models import BranchOffices
+from doctors.models import Doctor, Specialty
+
 
 def index(request):
     branchOffices = BranchOffices.objects.all()[:4]
@@ -15,6 +17,11 @@ def index(request):
         'doctors':doctors,
     }
     return render(request, 'index.html', context)
+
+
+def error404(request):
+    return render(request, 'error404.html')
+
 
 
 
