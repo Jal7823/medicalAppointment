@@ -1,5 +1,5 @@
 from django.conf.global_settings import MEDIA_URL, STATIC_URL
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser, BaseUserManager,PermissionsMixin
 from doctors.models import Doctor,Patology,Exam
 from django.db import models
 
@@ -94,6 +94,10 @@ class Usuario(AbstractUser):
 
     @property
     def is_staff(self):
+        return self.user_administrator
+
+    @property
+    def is_superuser(self):
         return self.user_administrator
 
     def get_image(self):

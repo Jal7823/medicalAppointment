@@ -42,7 +42,7 @@
                       <a class="nav-link" href="{% url 'branchOffices' %}">Sucursales</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Conocenos</a>
+                      <a class="nav-link" href="{% url 'about' %}">Conocenos</a>
                   </li>
                   {% if user.is_authenticated %}
                   <li class="nav-item d-flex">
@@ -88,23 +88,7 @@
               role="button"
               ><i class="fab fa-facebook-f"></i
             ></a>
-      
-            <a
-              class="btn btn-primary btn-floating m-1"
-              style="background-color: #55acee;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-twitter"></i
-            ></a>
-      
-            <a
-              class="btn btn-primary btn-floating m-1"
-              style="background-color: #dd4b39;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-google"></i
-            ></a>
-      
+            
             <a
               class="btn btn-primary btn-floating m-1"
               style="background-color: #ac2bac;"
@@ -113,13 +97,6 @@
               ><i class="fab fa-instagram"></i
             ></a>
       
-            <a
-              class="btn btn-primary btn-floating m-1"
-              style="background-color: #0082ca;"
-              href="#!"
-              role="button"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
             <a
               class="btn btn-primary btn-floating m-1"
               style="background-color: #333333;"

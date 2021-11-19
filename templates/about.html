@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+    <h2 class="h2 text-danger text-center mb-4">Sobre nosotros</h2>
+    <div class="row">
+        <div class="col-md-6">Nacimos en 1989 con la construcción de la Clínica y Maternidad Suizo Argentina, la primera inversión del grupo y el eslabón inicial para los sucesivos emprendimientos que nos colocaron como una de las organizaciones líderes en esta actividad.
+            A esto le siguió la creación de nuestra propia medicina prepaga en 1994: Swiss Medical Medicina Privada, que desde entonces se convirtió en una de las empresas de servicios de salud más importantes de la Argentina, brindando cobertura a más de 950.000 asociados.</div>
+        <div class="col-md-6">Luego, el Grupo ingresa al mercado de seguros mediante la adquisición del 100% de St. Paul Argentina, compañía destacada en el mercado nacional e internacional por su excepcional nivel de solvencia. Así nace Swiss Medical Seguros.
+
+            Somos unos de los principales grupos de Argentina dedicados a la protección de personas, compuesto por 8 clínicas, 12 centros médicos ambulatorios, ECCO Emergencia y Prevención, SMG Cells, Swiss Medical Seguros, Instituto de Salta, Fundación Swiss Medical y Blue Cross & Blue Shield en Uruguay.</div>
+    </div>
+    <img src="{% static 'img/about.jpg' %}" alt="">
+    <div class="row">
+        <div class="col-md-6">Misión y Filosofía
+
+            "Cuidar la salud de nuestros clientes brindando un servicio integral de máxima calidad.</div>
+
+        <div class="col-md-6">Medical Service Medicina Privada
+            Poseemos una moderna concepción en protección médica que responde a los nuevos desafíos y necesidades planteados por un sistema basado en la calidad de servicio.
+
+            Más de 60.000 profesionales de todas las especialidades y más de 18.300 prestadores de diagnóstico y tratamiento, junto a las mejores clínicas de internación del país, garantizan la satisfacción de nuestros asociados.</div>
+    </div>
+
+</div>
+
+      
+{% endblock %}

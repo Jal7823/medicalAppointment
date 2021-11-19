@@ -26,7 +26,10 @@
         <form class='w-50' method='POST' >
             {% csrf_token %}
                 {{form | crispy}}
-            <input class="btn btn-danger w-100" type='submit' value="Registrar cita">
+                <div class="d-flex justify-content-center">
+                    <input class="btn btn-danger w-25 " type='submit' value="Registrar cita">
+
+                </div>
         </form>
     </div>
 </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.generic import DetailView,ListView
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 
 from .forms import formsAppointment
 from .models import Appointment
