@@ -1,6 +1,7 @@
 :root{
     --firtsColor:#E6203A;
     --secondsColor:#33287C;
+	--wh:#fff;
 }
 
 .main-content{
@@ -95,4 +96,8 @@ form{
 
 .footer{
 	display:none;
+}
+
+.logo-login{
+	background: #fff;
 }
