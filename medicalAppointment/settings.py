@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'branchOffices',
     'appointment',
     'pruebas',
+    'controlPanel',
     #external
     'crispy_forms',
     "crispy_bootstrap5",
