@@ -28,6 +28,7 @@ urlpatterns = [
     path('appointment/', include('appointment.urls')),
     path('pruebas/', include('pruebas.urls')),
     path('users/', include('usersApp.urls')),
+    path('controlPanel/', include('controlPanel.urls')),
     path('',index,name='index')
 ]+ static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
