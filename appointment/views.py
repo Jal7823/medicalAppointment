@@ -10,7 +10,6 @@ from usersApp.models import Usuario
 
 
 
-
 @login_required(login_url='login')
 def appointment(request):
     appointment = Appointment.objects.all()
@@ -35,7 +34,7 @@ def appointment(request):
 
 def appointmentList(request):
     usuariocita = Appointment.objects.all()
-    usuarioactivo = request.user.username
+    usuarioactivo = request.user.id
     context={
         'usuariocita':usuariocita,
         'usuarioactivo':usuarioactivo,

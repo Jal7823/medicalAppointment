@@ -1,13 +1,17 @@
 from django.conf import settings
 from django.db import models
+from django_userforeignkey.models.fields import UserForeignKey
+
 
 from branchOffices.models import BranchOffices
 from doctors.models import Specialty
-from usersApp.models import Usuario
+from django.contrib.auth.models import User
+
+
 
 
 class Appointment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,default=Usuario.is_active, on_delete=models.CASCADE)
+    user = UserForeignKey(auto_user_add=True) 
     name = models.CharField('Nombre', max_length=100,null=True,blank=True)
     lastName = models.CharField('Apellido', max_length=100,null=True,blank=True)
     dni = models.IntegerField('DNI',null=True,blank=True)
