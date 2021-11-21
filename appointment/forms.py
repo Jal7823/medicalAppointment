@@ -11,7 +11,6 @@ class formsAppointment(forms.ModelForm):
         fields = '__all__'
         exclude = ('user',)
         widgets = {
-            
             'date':forms.DateInput(attrs={
                 'type': 'date',
                 'class':'datetimepicker-input',

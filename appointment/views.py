@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required,permission_required
 from .forms import formsAppointment
 from .models import Appointment
 from django.contrib.auth.models import User
+from usersApp.models import Usuario
 
 
 
@@ -14,6 +15,7 @@ from django.contrib.auth.models import User
 def appointment(request):
     appointment = Appointment.objects.all()
     title = 'Citas Medicas'
+
 
     if request.method == 'POST':
         form = formsAppointment(request.POST)
@@ -31,17 +33,14 @@ def appointment(request):
 
     return render(request, 'appointment/appointment.html',context)
 
-# def AppointmentDetail(request):
-#     userActive = User.id
-#     appointment = Appointment.objects.get(
-#         Q(id=userActive),
-#     )    
+def appointmentList(request):
+    usuariocita = Appointment.objects.all()
+    usuarioactivo = request.user.username
+    context={
+        'usuariocita':usuariocita,
+        'usuarioactivo':usuarioactivo,
+    }
 
-#     context = {
-#         'appointment':appointment,
-#     }
-#     print('==>',userActive)
+    return render(request, 'appointment/appointmentDetail.html',context)
 
-#     return render(request,'appointment/appointmentDetail.html',context)
 
-    
