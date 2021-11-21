@@ -9,10 +9,12 @@
 
 {% block content %}
 
+{{formatDate}}
+
 <div class="container">
     <table class="table">
         <thead>
-          <tr>
+          <tr class="text-center">
             <th scope="col">Usuario</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
@@ -23,12 +25,12 @@
         </thead>
         <tbody>
             {% for a in filterUser %}
-                <tr>
+                <tr class="text-center">
                     <td class='text-primary'>@{{a.user}}</td>
                     <td>{{a.name | upper}}</td>
                     <td>{{a.lastName | upper}}</td>
                     <td>{{a.specialty.name}}</td>
-                    <td>{{a.date}}</td>
+                    <td>{{a.date|date:"d/m/Y" }}</td>
                     <td>{{a.branchOffices.name}}</td>
                 </tr>
             {% endfor %}

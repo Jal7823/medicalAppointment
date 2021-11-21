@@ -1,13 +1,15 @@
-from django.shortcuts import render,redirect
-from django.views.generic import DetailView,ListView
+from locale import format
+
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
 from django.db.models import Q
-from django.contrib.auth.decorators import login_required,permission_required
+from django.shortcuts import redirect, render
+from django.views.generic import DetailView, ListView
+
+from usersApp.models import Usuario
 
 from .forms import formsAppointment
 from .models import Appointment
-from django.contrib.auth.models import User
-from usersApp.models import Usuario
-
 
 
 @login_required(login_url='login')
@@ -39,6 +41,7 @@ def appointmentList(request):
         Q(user_id = userActivate)
     )
 
+
     context={
         'userActivate':userActivate,
         'filterUser':filterUser,
@@ -46,5 +49,3 @@ def appointmentList(request):
     }
 
     return render(request, 'appointment/appointmentDetail.html',context)
-
-
