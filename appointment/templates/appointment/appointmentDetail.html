@@ -9,13 +9,33 @@
 
 {% block content %}
 
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Usuario</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Sucursal</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for a in filterUser %}
+                <tr>
+                    <td class='text-primary'>@{{a.user}}</td>
+                    <td>{{a.name | upper}}</td>
+                    <td>{{a.lastName | upper}}</td>
+                    <td>{{a.specialty.name}}</td>
+                    <td>{{a.date}}</td>
+                    <td>{{a.branchOffices.name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    
+</div>
 
-<hr>
-{% for a in usuariocita  %}
-    <li>cita:{{a.user.id}}</li>
-{% endfor %}
 
-<hr>
-usuario activo id:{{usuarioactivo}}
-      
 {% endblock %}

@@ -33,11 +33,16 @@ def appointment(request):
     return render(request, 'appointment/appointment.html',context)
 
 def appointmentList(request):
-    usuariocita = Appointment.objects.all()
-    usuarioactivo = request.user.id
+    userActivate = request.user.id
+
+    filterUser = Appointment.objects.filter(
+        Q(user_id = userActivate)
+    )
+
     context={
-        'usuariocita':usuariocita,
-        'usuarioactivo':usuarioactivo,
+        'userActivate':userActivate,
+        'filterUser':filterUser,
+
     }
 
     return render(request, 'appointment/appointmentDetail.html',context)
