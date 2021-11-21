@@ -9,6 +9,7 @@ class formsAppointment(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = '__all__'
+        exclude = ('user',)
         widgets = {
             
             'date':forms.DateInput(attrs={
