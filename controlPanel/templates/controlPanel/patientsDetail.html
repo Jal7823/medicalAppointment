@@ -1,0 +1,20 @@
+{% extends 'controlPanel/controlPanel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="container">
+    <li>{{object.name}}</li>
+    <li>{{object.history}}</li>
+</div>
+
+
+
+      
+{% endblock %}

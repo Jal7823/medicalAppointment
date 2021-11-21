@@ -9,10 +9,6 @@ class Specialty(models.Model):
     def __str__(self):
         return self.name
 
-
-
-
-
 class Doctor(models.Model):
     name = models.CharField('Nombre', max_length=50)
     lastName = models.CharField('Apellido', max_length=50)
