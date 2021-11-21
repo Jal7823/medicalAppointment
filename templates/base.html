@@ -58,6 +58,16 @@
                   </li>
                   {% endif %}
 
+                  
+                  {% if user.is_superuser %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'controlPanel' %}">Panel</a>
+                  </li>
+
+                    
+                  {% endif %}
+                    
+
                       
                 </ul>
             </div>
