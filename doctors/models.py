@@ -1,4 +1,6 @@
 from django.db import models
+from usersApp.models import Usuario
+
 
 
 class Specialty(models.Model):
@@ -28,8 +30,12 @@ class Patology(models.Model):
 
 
 class Exam(models.Model):
+    patients = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     name = models.CharField('Examen', max_length=100)
-    result = models.BooleanField('Resultado')
+    image = models.ImageField('Imagen', upload_to='examImage/',null=True,blank=True)
+    description = models.TextField('Descripcion',null=True,blank=True)
+    asigned = models.BooleanField('Asignado',default=False)
+    result = models.BooleanField('Realizado',default=False)
 
     def __str__(self):
         return self.name
