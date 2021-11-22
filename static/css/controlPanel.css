@@ -1,8 +1,10 @@
 :root{
     --iconsSidebar:#DC3545;
-    --sidebarColor:#232836;
+    --sidebarColor:#070C1B;
 
 }
+
+
 
 .icon-sidebar > i{
     color:var(--iconsSidebar);
@@ -11,9 +13,7 @@
     background:var(--sidebarColor);
 }
 
-.main-sidebar{
-    /* background:var(--dashboard); */
-}
+
 
 .medical-container {
     height:10rem;

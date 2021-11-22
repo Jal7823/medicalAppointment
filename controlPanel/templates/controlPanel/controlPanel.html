@@ -13,11 +13,8 @@
   <div class="row ">
     <div class="col-md-10">
       
-      <h1 class="display-3 text-bold">Dr. {{user.name | title}} {{user.lastName | title}}</h1>
+      <h1 class="display-3 text-bold text-center">Dr. {{user.name | title}} {{user.lastName | title}}</h1>
       
-    </div>
-    <div class=" container-doctorComic d-flex justify-content-center col-md-2 rounded-circle ">
-      <img class="doctorComic" src="{{ request.user.get_image }}" alt="">
     </div>
   </div>
 </div>
