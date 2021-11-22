@@ -3,6 +3,7 @@ from django.views.generic import ListView,DetailView,UpdateView,DeleteView
 from django.db.models import Q
 from django.db.models import Avg, Max, Min, Sum
 import datetime
+from django.urls import reverse_lazy
 
 from appointment.models import Appointment
 from usersApp.models import Usuario
@@ -79,9 +80,9 @@ class PatientDetailView(DetailView):
 
 class UsersUpdateView(UpdateView):
     model = Usuario
-    fields = ['name','lastName','dni','doctors','exam','patology','history']
+    fields = ['name','lastName','dni','doctors','exam','patology','sick','history']
     template_name = "controlPanel/patientsUpdate.html"
-    success_url='/'
+    success_url=reverse_lazy('PatientsListView')
 
 
 

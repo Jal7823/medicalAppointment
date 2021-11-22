@@ -74,9 +74,9 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- sidebar-dark-primary -->
+  <aside class="main-sidebar  elevation-4">
     <!-- Brand Logo -->
     <a href="{% url 'controlPanel' %}" class="brand-link">
       <img src="{% static 'img/logos/logo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -91,28 +91,28 @@
           <!-- <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
         </div>
         <div class="info">
-          <a href="#" class="d-block h4"><i class="fas fa-user-md"></i> Dr. {{user.name}}</a>
+          <a href="#" class="d-block h4 text-white"><i class="fas fa-user-md"></i> Dr. {{user.name}}</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="ul-sidebar nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
+              <i class="text-white  nav-icon fas fa-users"></i>
+              <p class="text-white" >
                 Pacientes
-                <i class="right fas fa-angle-left"></i>
+                <i class="text-white right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="text-primary  nav-item">
                 <a href="{% url 'PatientsListView' %}" class="nav-link">
-                  <i class="fas fa-user-injured nav-icon"></i>
-                  <p>Listado de pacientes</p>
+                  <i class="text-white fas fa-user-injured nav-icon"></i>
+                  <p class="text-white" >Listado de pacientes</p>
                 </a>
               </li>
               <!-- <li class="nav-item">
@@ -131,110 +131,110 @@
           </li>
           <li class="nav-item">
             <a href="widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
+              <i class="text-white  nav-icon fas fa-file-alt"></i>
+              <p class="text-white" >
                 Examenes
               </p>
             </a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
+              <i class="text-white nav-icon fas fa-chart-pie"></i>
+              <p class="text-white" >
                 Proyecciones de unidad
-                <i class="right fas fa-angle-left"></i>
+                <i class="text-white  right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >ChartJS</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="charts/flot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Flot</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="charts/inline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inline</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Inline</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="charts/uplot.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>uPlot</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >uPlot</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-dollar-sign"></i>
-              <p>
+              <i class="text-white  nav-icon fas fa-dollar-sign"></i>
+              <p class="text-white" >
                 Facturacion
-                <i class="fas fa-angle-left right"></i>
+                <i class="text-white  fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="UI/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >General</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/icons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Icons</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Buttons</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Sliders</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Modals & Alerts</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Navbar & Tabs</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Timeline</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
+                  <i class="text-white  far fa-circle nav-icon"></i>
+                  <p class="text-white" >Ribbons</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="{% url 'index' %}" class="nav-link">
-              <i class="nav-icon fas fa-globe"></i>
-              <p>
+              <i class="text-white  nav-icon fas fa-globe"></i>
+              <p class="text-white" >
                 Pagina
               </p>
             </a>

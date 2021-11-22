@@ -19,7 +19,6 @@
     <table class="table">
         <thead>
           <tr class="text-center">
-            <th scope="col">Usuario</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Especialidad</th>
@@ -33,8 +32,7 @@
           {% if user %}
             {% for a in usersAppointment  %}
               <tr class="text-center">
-                  <td class='text-primary'>@{{a.user}}</td>
-                  <td>{{a.name | upper}}</td>
+                  <td><a href="{% url 'PatientDetailView' a.user_id %}">{{a.name | upper}}</a></td>
                   <td>{{a.lastName | upper}}</td>
                   <td>{{a.specialty.name}}</td>
                   <td>{{a.date|date:"d/m/Y" }}</td>
