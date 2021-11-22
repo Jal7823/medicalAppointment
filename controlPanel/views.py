@@ -80,7 +80,7 @@ class PatientDetailView(DetailView):
 
 class UsersUpdateView(UpdateView):
     model = Usuario
-    fields = ['name','lastName','dni','doctors','exam','patology','sick','history']
+    fields = ['name','lastName','dni','doctors','patology','sick','history']
     template_name = "controlPanel/patientsUpdate.html"
     success_url=reverse_lazy('PatientsListView')
 

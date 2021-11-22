@@ -86,26 +86,6 @@
                                 
                             </td>
                         </tr>
-                        <tr>
-                            <td class="text-bold">Examenes Realizados</td>
-                            <td class="text-center">
-                                {% for e in object.exam.all  %}
-                                    
-                                    {% if e.asigned %}
-                                        {{e.name}}
-                                        
-                                        {% if e.result %}
-                                            &nbsp;<button class="btn btn-success"><i class="fas fa-poll"></i></button>
-                                            
-                                        {% endif %}
-                                            
-                                    {% else %}
-                                        No existen examenes asignados al paciente
-                                    {% endif %}
-                                        
-                                {% endfor %}
-                            </td>
-                        </tr>
 
                     </tbody>
                 </table>
