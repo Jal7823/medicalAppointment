@@ -31,7 +31,8 @@
                     <td>{{a.specialty.name}}</td>
                     <td>{{a.date|date:"d/m/Y" }}</td>
                     <td>{{a.branchOffices.name}}</td>
-                    <td><a href="{% url 'PatientDetailView' a.user_id %}"><i class="fa fa-edit text-warning bg-danger p-2 rounded"></i></a></td>
+                    <td><a href="{% url 'PatientDetailView' a.user_id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a></td>
+                    <td><a href="{% url 'UsersUpdateView' a.user_id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a></td>
                 </tr>
             {% endfor %}
         </tbody>
