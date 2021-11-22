@@ -15,6 +15,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static 'lib/adminSources/dist/css/adminlte.min.css' %}">
   <!-- <link rel="stylesheet" href="../dist/css/adminlte.min.css"> -->
+  <!-- internal style -->
+  <link rel="stylesheet" href="{% static 'css/controlPanel.css' %}">
+  <!-- internal style -->
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -108,11 +111,11 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{% url 'PatientsListView' %}" class="nav-link">
-                  <i class="far fa-circle nav-icon "></i>
-                  <p>Pacientes</p>
+                  <i class="fas fa-user-injured nav-icon"></i>
+                  <p>Listado de pacientes</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="../index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Marcas v2</p>
@@ -123,11 +126,11 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ventas v3</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           <li class="nav-item">
-            <a href="widgets.html" class="nav-link active">
+            <a href="widgets.html" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Examenes
@@ -258,7 +261,183 @@
       </div><!-- /.container-fluid -->
     </section>
 
+<!-- medic loged -->
+    <div class=" medical-container container mb-4 mt-4 rounded bg-white">
+      <div class="row ">
+        <div class="col-md-10">
+          
+          <h1 class="display-1 text-bold">{{user.username | title}}</h1>
+          
+        </div>
+        <div class=" container-doctorComic d-flex justify-content-center col-md-2 rounded-circle ">
+          <img class="doctorComic" src="{% static 'img/doctorComic.png' %}" alt="">
+        </div>
+      </div>
+    </div>
+<!-- medic loged -->
+
     <!-- Main content -->
+
+    <div class="container">
+      <div class="row">
+        <div class=" col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info medical-tags">
+            <div class="inner">
+              <h3 class="number">{{appointmentCountToDay}}</h3>
+    
+              <p>Citas para hoy</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class=" col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success medical-tags">
+            <div class="inner">
+              <h3 class="number">{{cured}}<sup style="font-size: 20px"></sup></h3>
+    
+              <p>Recuperados</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning medical-tags">
+            <div class="inner">
+              <h3 class="number">{{countUser}}</h3>
+    
+              <p>Pacientes Registrados</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class=" col-lg-6 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger medical-tags">
+            <div class="inner">
+              <h3 class="number">{{sickUser}}</h3>
+    
+              <p>Pacientes enfermos</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+    
+    </div>
+    
+    <hr>
+    <!-- <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 text-center text-danger text-bold">Control de citas</h1>
+      </div>
+    </div> -->
+
+    <!-- apointment  -->
+    <!-- <div class="container mt-4 mb-4">
+      <h1 class="display-6 text-center">Citas para hoy</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">D.N.I.</th>
+            <th scope="col">Doctor asignado</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Sucursal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in appointmentToDay %}
+            <tr>
+              <th scope="row">{{a.name}}</th>
+              <td>{{a.lastName}}</td>
+              <td>{{a.dni}}</td>
+              <td>{{a.specialty.name}}</td>
+              <td>{{a.date|date:"d/m/Y"}}</td>
+              <td>{{a.branchOffices.name}}</td>
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>   -->
+
+    <!-- apointment  -->
+    <!-- apointment month  -->
+    <!-- <div class="container mt-4 mb-4">
+      <h1 class="display-6 text-center">Citas para del mes</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">D.N.I.</th>
+            <th scope="col">Doctor asignado</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Sucursal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in appointmentDiferentDay %}
+            <tr>
+              <th scope="row">{{a.name}}</th>
+              <td>{{a.lastName}}</td>
+              <td>{{a.dni}}</td>
+              <td>{{a.specialty.name}}</td>
+              <td>{{a.date|date:"d/m/Y"}}</td>
+              <td>{{a.branchOffices.name}}</td>
+
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>   -->
+
+    <!-- apointment month  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     {% block content %}
       

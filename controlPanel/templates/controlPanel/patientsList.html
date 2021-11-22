@@ -10,6 +10,15 @@
 {% block content %}
 
 <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 text-center text-danger text-bold">Listado de Paciente</h1>
+    </div>
+  </div>
+
+
+
+
     <table class="table">
         <thead>
           <tr class="text-center">
@@ -31,8 +40,10 @@
                     <td>{{a.specialty.name}}</td>
                     <td>{{a.date|date:"d/m/Y" }}</td>
                     <td>{{a.branchOffices.name}}</td>
-                    <td><a href="{% url 'PatientDetailView' a.user_id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a></td>
-                    <td><a href="{% url 'UsersUpdateView' a.user_id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a></td>
+                    <td>
+                      <a href="{% url 'PatientDetailView' a.id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
+                      <a href="{% url 'UsersUpdateView' a.id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a>
+                  </td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -72,10 +72,10 @@ class Usuario(AbstractUser):
     )
     pcia = models.CharField(max_length=300, choices=provincias,verbose_name='Provincia', blank=True, null=True)
     tlf = models.IntegerField(verbose_name='Telefono', blank=True, null=True)
-    
-    doctors = models.ManyToManyField(Doctor,'Doctor')
-    exam = models.ManyToManyField(Exam,'Examen')
-    patology = models.ManyToManyField(Patology,'Patologia')
+    sick = models.BooleanField(default=False)
+    doctors = models.ManyToManyField(Doctor,'Doctor',null=True,blank=True)
+    exam = models.ManyToManyField(Exam,'Examen',null=True,blank=True)
+    patology = models.ManyToManyField(Patology,'Patologia',null=True,blank=True)
     history = models.TextField('Historia',null=True,blank=True)
 
     objects = UsuarioManager()
