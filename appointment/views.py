@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import redirect, render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView,DeleteView
 
 from usersApp.models import Usuario
 
@@ -49,3 +49,10 @@ def appointmentList(request):
     }
 
     return render(request, 'appointment/appointmentDetail.html',context)
+
+
+
+class AppointmentDeleteView(DeleteView):
+    model = Appointment
+    template_name = "appointment/appointmentDelete.html"
+    success_url='/'

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container d-flex justify-content-center align-content-center">
+    <form method="post">{% csrf_token %}
+        <p>Estas seguro de eliminar tu cita? "{{ object }}"?</p>
+        <div class="d-flex justify-content-center">
+            <input class="btn btn-success" type="submit" value="Confirmar">
+            <a href="appointmentList" class="btn btn-danger ml-4">Cancelar</a>
+    
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
+

@@ -10,15 +10,12 @@
 {% block content %}
 
 <div class="container">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4 text-center text-danger text-bold">Listado de Paciente</h1>
-    </div>
-  </div>
+  <h1 class="display-6 text-bold text-center text-danger mb-4">Listado de pacientes</h1>
+</div>
 
 
 
-
+<div class="container">
     <table class="table">
         <thead>
           <tr class="text-center">
@@ -32,20 +29,24 @@
           </tr>
         </thead>
         <tbody>
+          
+          {% if user %}
             {% for a in usersAppointment  %}
-                <tr class="text-center">
-                    <td class='text-primary'>@{{a.user}}</td>
-                    <td>{{a.name | upper}}</td>
-                    <td>{{a.lastName | upper}}</td>
-                    <td>{{a.specialty.name}}</td>
-                    <td>{{a.date|date:"d/m/Y" }}</td>
-                    <td>{{a.branchOffices.name}}</td>
-                    <td>
-                      <a href="{% url 'PatientDetailView' a.id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
-                      <a href="{% url 'UsersUpdateView' a.id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a>
-                  </td>
-                </tr>
+              <tr class="text-center">
+                  <td class='text-primary'>@{{a.user}}</td>
+                  <td>{{a.name | upper}}</td>
+                  <td>{{a.lastName | upper}}</td>
+                  <td>{{a.specialty.name}}</td>
+                  <td>{{a.date|date:"d/m/Y" }}</td>
+                  <td>{{a.branchOffices.name}}</td>
+                  <td>
+                    <a href="{% url 'PatientDetailView' a.user_id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
+                    <a href="{% url 'UsersUpdateView' a.user_id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a>
+                </td>
+              </tr>
             {% endfor %}
+          {% endif %}
+            
         </tbody>
       </table>
     

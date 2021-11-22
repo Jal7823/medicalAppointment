@@ -15,11 +15,11 @@
 
 <div class="container">
 
-    <div class="jumbotron jumbotron-fluid">
+    
         <div class="container">
           <h1 class="display-4 text-center text-danger text-bold">Datos del Paciente</h1>
         </div>
-      </div>
+      
 
     <div class="row">
         <div class="col-md-8 offset-md-2 mt-5">
@@ -59,7 +59,9 @@
                             <td class="text-bold">Doctor asignado</td>
                             <td class="text-center">
                                 {% for d in object.doctors.all  %}
-                                    {{d}}
+                                    {{d}} / {% for s in d.specialty.all %}
+                                                {{s}}
+                                            {% endfor %}
                                 {% endfor %}
                             </td>
                         </tr>
@@ -81,7 +83,15 @@
                         </tr>
                         <tr>
                             <td class="text-bold">Historial Medico</td>
-                            <td class="text-center">{{object.history}}</td>
+                            <td class="text-center">
+                                
+                                {% if object.history == None %}
+                                    Sin historial medico
+                                {% else %}
+                                {{object.history}}
+                                {% endif %}
+                                    
+                            </td>
                         </tr>
 
                     </tbody>

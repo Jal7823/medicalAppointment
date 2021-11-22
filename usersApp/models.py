@@ -77,6 +77,7 @@ class Usuario(AbstractUser):
     exam = models.ManyToManyField(Exam,'Examen',null=True,blank=True)
     patology = models.ManyToManyField(Patology,'Patologia',null=True,blank=True)
     history = models.TextField('Historia',null=True,blank=True)
+    isDoctor = models.BooleanField(default=False)
 
     objects = UsuarioManager()
 

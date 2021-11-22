@@ -10,17 +10,23 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import permission_required,login_required
 # Create your views here.
 
+
+def controlPanelBase(request):
+    return render(request, 'controlPanel/controlPanelBase.html')
+
+
+
 def controlPanel(request):
+
     # for counts
     countUser= Usuario.objects.all().count()
     sickUser = Usuario.objects.filter(
         Q(sick=True)
-    ).count()
+    ).count() 
 
     cured = Usuario.objects.filter(
         Q(sick=False)
-    ).count()
-
+    ).count() -1
 
     # for appointment
 
@@ -32,7 +38,7 @@ def controlPanel(request):
     appointmentDiferentDay = Appointment.objects.filter(
         ~Q(date=fecha)
     )
-    appointmentCountToDay = Appointment.objects.filter(date=fecha).count()
+    appointmentCountToDay = Appointment.objects.filter(date=fecha).count() 
 
 
     #for appointment months
