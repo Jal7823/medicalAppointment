@@ -21,6 +21,7 @@
             <th scope="col">Especialidad</th>
             <th scope="col">Fecha</th>
             <th scope="col">Sucursal</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                     <td>{{a.specialty.name}}</td>
                     <td>{{a.date|date:"d/m/Y" }}</td>
                     <td>{{a.branchOffices.name}}</td>
+                    <td><a href="{% url 'AppointmentDeleteView' a.id %}"><i class="fa fa-trash bg-danger p-2 text-white rounded"></i></a></td>
                 </tr>
             {% endfor %}
         </tbody>

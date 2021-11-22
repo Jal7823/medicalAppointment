@@ -1,0 +1,25 @@
+{% extends 'controlPanel/controlPanel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="container mb-4">
+    <div class="form-container d-flex justify-content-center">
+        <form method='POST' class="w-50" >
+            {% csrf_token %}
+                {{form | crispy}}
+                <input type="submit" class="btn btn-danger">
+        </form>
+    
+    </div>
+</div>
+
+
+      
+{% endblock %}

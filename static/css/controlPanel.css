@@ -1,0 +1,47 @@
+:root{
+    --iconsSidebar:#DC3545;
+    --sidebarColor:#070C1B;
+
+}
+
+
+
+.icon-sidebar > i{
+    color:var(--iconsSidebar);
+}
+.main-sidebar{
+    background:var(--sidebarColor);
+}
+
+
+
+.medical-container {
+    height:10rem;
+    color: #fff;
+    
+}
+
+.medical-tags{
+    height:17rem;
+
+}
+
+.display-1{
+    color:#000;
+}
+.container-doctorComic {
+    background:#F4F6F9;
+    transform:translateY(-60px);
+
+
+}
+.doctorComic{
+    width:auto;
+    height:220px;
+    /* transform:translateY(-60px); */
+    padding:2rem;
+}
+
+.number{
+    font-size:90px;
+}

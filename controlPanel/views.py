@@ -1,13 +1,63 @@
 from django.shortcuts import render
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import ListView,DetailView,UpdateView,DeleteView
+from django.db.models import Q
+from django.db.models import Avg, Max, Min, Sum
+import datetime
+from django.urls import reverse_lazy
+
 from appointment.models import Appointment
 from usersApp.models import Usuario
-
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.decorators import permission_required,login_required
 # Create your views here.
 
+
+def controlPanelBase(request):
+    return render(request, 'controlPanel/controlPanelBase.html')
+
+
+
 def controlPanel(request):
-    return render(request, 'controlPanel/controlPanel.html')
+
+    # for counts
+    countUser= Usuario.objects.all().count()
+    sickUser = Usuario.objects.filter(
+        Q(sick=True)
+    ).count() 
+
+    cured = Usuario.objects.filter(
+        Q(sick=False)
+    ).count() -1
+
+    # for appointment
+
+    #for appointment today
+
+    date = datetime.datetime.now()
+    fecha = date.strftime('%Y-%m-%d')
+    appointmentToDay = Appointment.objects.filter(date=fecha)
+    appointmentDiferentDay = Appointment.objects.filter(
+        ~Q(date=fecha)
+    )
+    appointmentCountToDay = Appointment.objects.filter(date=fecha).count() 
+
+
+    #for appointment months
+
+    appointmentMonth = Appointment.objects.all()
+
+
+    context = {
+        'countUser':countUser,
+        'sickUser':sickUser,
+        'cured':cured,
+        'appointmentToDay':appointmentToDay,
+        'appointmentCountToDay':appointmentCountToDay,
+        'appointmentMonth':appointmentMonth,
+        'appointmentDiferentDay':appointmentDiferentDay,
+    }
+
+    return render(request, 'controlPanel/controlPanel.html',context)
 
 
 
@@ -25,3 +75,14 @@ class PatientsListView(ListView):
 class PatientDetailView(DetailView):
     model = Usuario
     template_name = "controlPanel/patientsDetail.html"
+
+
+
+class UsersUpdateView(UpdateView):
+    model = Usuario
+    fields = ['name','lastName','dni','doctors','exam','patology','sick','history']
+    template_name = "controlPanel/patientsUpdate.html"
+    success_url=reverse_lazy('PatientsListView')
+
+
+
