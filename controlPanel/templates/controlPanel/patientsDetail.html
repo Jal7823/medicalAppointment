@@ -59,25 +59,18 @@
                             <td class="text-bold">Doctor asignado</td>
                             <td class="text-center">
                                 {% for d in object.doctors.all  %}
-                                    {{d}} / {% for s in d.specialty.all %}
+                                    Dr. {{d}} / {% for s in d.specialty.all %}
                                                 {{s}}
                                             {% endfor %}
                                 {% endfor %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Examenes Realizados</td>
-                            <td class="text-center">
-                                {% for e in object.exam.all  %}
-                                    {{e.name}}
-                                {% endfor %}
+                                
                             </td>
                         </tr>
                         <tr>
                             <td class="text-bold">Patologias</td>
                             <td class="text-center">
                                 {% for p in object.patology.all  %}
-                                    {{p.name}}
+                                {{p.name}}
                                 {% endfor %}
                             </td>
                         </tr>
@@ -86,11 +79,11 @@
                             <td class="text-center">
                                 
                                 {% if object.history == None %}
-                                    Sin historial medico
+                                Sin historial medico
                                 {% else %}
                                 {{object.history}}
                                 {% endif %}
-                                    
+                                
                             </td>
                         </tr>
 

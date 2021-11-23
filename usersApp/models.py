@@ -1,6 +1,6 @@
 from django.conf.global_settings import MEDIA_URL, STATIC_URL
 from django.contrib.auth.models import AbstractUser, BaseUserManager,PermissionsMixin
-from doctors.models import Doctor,Patology,Exam
+from doctors.models import Doctor,Patology
 from django.db import models
 
 
@@ -74,7 +74,6 @@ class Usuario(AbstractUser):
     tlf = models.IntegerField(verbose_name='Telefono', blank=True, null=True)
     sick = models.BooleanField(default=False)
     doctors = models.ManyToManyField(Doctor,'Doctor',null=True,blank=True)
-    exam = models.ManyToManyField(Exam,'Examen',null=True,blank=True)
     patology = models.ManyToManyField(Patology,'Patologia',null=True,blank=True)
     history = models.TextField('Historia',null=True,blank=True)
     isDoctor = models.BooleanField(default=False)

@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Specialty(models.Model):
     name = models.CharField("Especialidad", max_length=100)
     image = models.ImageField('Imagen', upload_to='specialty/',null=True,blank=True)
@@ -27,11 +28,5 @@ class Patology(models.Model):
         return self.name
 
 
-class Exam(models.Model):
-    name = models.CharField('Examen', max_length=100)
-    result = models.BooleanField('Resultado')
-
-    def __str__(self):
-        return self.name
 
 

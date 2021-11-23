@@ -1,0 +1,104 @@
+{% extends 'controlPanel/controlPanel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<script>
+    $(document).ready(function(){
+      let ctx = document.getElementById('canvas').getContext('2d');
+      let canvas = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+              labels: [{% for i in users %}'{{i.name}}',{% endfor %}],
+              datasets: [{
+                  label: 'Nro de Vendedores',
+                  data: [{% for i in users %}{{i.dni}},{% endfor %}],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  color: [
+                    'hex(#fff)',
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+    });
+  </script>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Area Chart</h3>
+            
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="chart">
+                      <div class="chartjs-size-monitor">
+                          <div class="chartjs-size-monitor-expand">
+                              <div class="">
+            
+                              </div>
+                            </div>
+                            <div class="chartjs-size-monitor-shrink">
+                                <div class="">
+            
+                                </div>
+                            </div>
+                        </div>
+                    <canvas id="canvas" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 468px;" width="936" height="500" class="chartjs-render-monitor"></canvas>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+
+
+
+        <div class="col-md-6"></div>
+        
+    </div>
+</div>
+
+
+      
+{% endblock %}
