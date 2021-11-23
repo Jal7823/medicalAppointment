@@ -86,3 +86,9 @@ class UsersUpdateView(UpdateView):
 
 
 
+def projections(request):
+    users = Usuario.objects.all()
+    context = {
+        'users':users,
+    }
+    return render(request, 'controlPanel/projections.html',context)
