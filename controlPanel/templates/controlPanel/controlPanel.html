@@ -29,10 +29,11 @@
     <div class="container">
       <div class="row">
         <div class=" col-lg-6 col-6">
+          <a href="{% url 'AppointmenToDay' %}">
           <!-- small box -->
           <div class="small-box bg-info medical-tags">
             <div class="inner">
-              <h3 class="number">{{appointmentCountToDay}}</h3>
+              <h3 class="number">{{appointmentMonth}}</h3>
     
               <p>Citas para hoy</p>
             </div>
@@ -41,6 +42,7 @@
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
+        </a>
         </div>
         <!-- ./col -->
         <div class=" col-lg-6 col-6">
@@ -61,6 +63,7 @@
         </div>
         <!-- ./col -->
         <div class="col-lg-6 col-6">
+          <a href="{% url 'PatientsListView' %}">
           <!-- small box -->
           <div class="small-box bg-warning medical-tags">
             <div class="inner">
@@ -73,6 +76,7 @@
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
+          </a>
         </div>
         <!-- ./col -->
         <div class=" col-lg-6 col-6">

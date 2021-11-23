@@ -115,19 +115,30 @@
                   <p class="text-white" >Listado de pacientes</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Marcas v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ventas v3</p>
-                </a>
-              </li> -->
             </ul>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="text-white  nav-icon fas fa-calendar-check"></i>
+                <p class="text-white" >
+                  Citas
+                  <i class="text-white  fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'AppointmenToDay' %}" class="nav-link">
+                    <i class="text-white  far fa-circle nav-icon"></i>
+                    <p class="text-white" >Citas para hoy</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'AppointmentListView' %}" class="nav-link">
+                    <i class="text-white  far fa-circle nav-icon"></i>
+                    <p class="text-white" >Citas para el mes</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -160,65 +171,6 @@
                 <a href="charts/uplot.html" class="nav-link">
                   <i class="text-white  far fa-circle nav-icon"></i>
                   <p class="text-white" >uPlot</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="text-white  nav-icon fas fa-dollar-sign"></i>
-              <p class="text-white" >
-                Facturacion
-                <i class="text-white  fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="UI/general.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >General</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/icons.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/buttons.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/sliders.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/modals.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/navbar.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/timeline.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="UI/ribbons.html" class="nav-link">
-                  <i class="text-white  far fa-circle nav-icon"></i>
-                  <p class="text-white" >Ribbons</p>
                 </a>
               </li>
             </ul>
