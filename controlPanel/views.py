@@ -92,3 +92,16 @@ def projections(request):
         'users':users,
     }
     return render(request, 'controlPanel/projections.html',context)
+
+
+class SicksListView(ListView):
+    model = Usuario
+    template_name = "controlPanel/sicksDetail.html"
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(SicksListView, self).get_context_data(**kwargs)
+        sicks = Usuario.objects.filter(sick=True)
+        context['sicks'] = sicks
+        return context
+    

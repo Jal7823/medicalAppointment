@@ -74,19 +74,22 @@
         </div>
         <!-- ./col -->
         <div class=" col-lg-6 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger medical-tags">
-            <div class="inner">
-              <h3 class="number">{{sickUser}}</h3>
-    
-              <p>Pacientes enfermos</p>
+            <a href="{% url 'SicksListView' %}">
+            <!-- small box -->
+            <div class="small-box bg-danger medical-tags">
+              <div class="inner">
+                <h3 class="number">{{sickUser}}</h3>
+      
+                <p>Pacientes enfermos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </a>
           </div>
-        </div>
+  
         <!-- ./col -->
       </div>
     

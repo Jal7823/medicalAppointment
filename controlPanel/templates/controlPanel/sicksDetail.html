@@ -1,0 +1,59 @@
+{% extends 'controlPanel/controlPanel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/controlPanel.css' %}">
+
+<div class="container">
+  <h1 class="display-6 text-bold text-center text-danger mb-4">Listado de pacientes</h1>
+</div>
+
+
+
+<div class="container-md">
+    <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Patologia</th>
+            <th scope="col">Doctor Asignado</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% if user %}
+            {% for a in sicks  %}
+              <tr class="text-center">
+                  <td><a href="{% url 'PatientDetailView' a.id %}">{{a.name | upper}}</a></td>
+                  <td>{{a.lastName | upper}}</td>
+                  <td>
+                      {% for p in a.patology.all %}
+                      {{a.name}}
+                      {% endfor %}
+                  </td>
+                  <td>
+                      {% for d in a.doctors.all %}
+                        Dr. {{d.name}}
+                      {% endfor %}
+                    </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+            
+        </tbody>
+      </table>
+    
+</div>
+
+
+
+      
+{% endblock %}
