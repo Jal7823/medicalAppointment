@@ -1,16 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic import ListView,DetailView,UpdateView,DeleteView
 from django.db.models import Q
 from django.db.models import Avg, Max, Min, Sum
 import datetime
 from django.urls import reverse_lazy
-
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import permission_required,login_required
+from django.core.exceptions import PermissionDenied
 # Create your views here.
-
 
 def controlPanelBase(request):
     return render(request, 'controlPanel/controlPanelBase.html')
@@ -19,34 +18,40 @@ def controlPanelBase(request):
 
 def controlPanel(request):
 
-    # for counts
-    countUser= Usuario.objects.all().count()
-    sickUser = Usuario.objects.filter(
-        Q(sick=True)
-    ).count() 
+    if request.user.isDoctor:
 
-    cured = Usuario.objects.filter(
-        Q(sick=False)
-    ).count() -1
+        # for counts
+        countUser= Usuario.objects.all().count()
+        sickUser = Usuario.objects.filter(
+            Q(sick=True)
+        ).count() 
 
-
-    # for appointment
-    date = datetime.datetime.now()
-    fecha = date.strftime('%Y-%m-%d')
-    appointmentToDay = Appointment.objects.filter(date=fecha).count()
+        cured = Usuario.objects.filter(
+            Q(sick=False)
+        ).count() -1
 
 
+        # for appointment
+        date = datetime.datetime.now()
+        fecha = date.strftime('%Y-%m-%d')
+        appointmentToDay = Appointment.objects.filter(date=fecha).count()
 
 
 
-    context = {
-        'countUser':countUser,
-        'sickUser':sickUser,
-        'cured':cured,
-        'appointmentMonth':appointmentToDay,
-    }
 
-    return render(request, 'controlPanel/controlPanel.html',context)
+
+        context = {
+            'countUser':countUser,
+            'sickUser':sickUser,
+            'cured':cured,
+            'appointmentMonth':appointmentToDay,
+        }
+
+        return render(request, 'controlPanel/controlPanel.html',context)
+    else:
+        return redirect(to='index')
+
+
 
 class AppointmenToDay(ListView):
     model = Appointment
