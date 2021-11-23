@@ -29,10 +29,11 @@
     <div class="container">
       <div class="row">
         <div class=" col-lg-6 col-6">
+          <a href="{% url 'AppointmenToDay' %}">
           <!-- small box -->
           <div class="small-box bg-info medical-tags">
             <div class="inner">
-              <h3 class="number">{{appointmentCountToDay}}</h3>
+              <h3 class="number">{{appointmentMonth}}</h3>
     
               <p>Citas para hoy</p>
             </div>
@@ -41,24 +42,28 @@
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
+        </a>
         </div>
         <!-- ./col -->
         <div class=" col-lg-6 col-6">
+          <a href="{% url 'HealthyListView' %}">
           <!-- small box -->
           <div class="small-box bg-success medical-tags">
             <div class="inner">
               <h3 class="number">{{cured}}<sup style="font-size: 20px"></sup></h3>
     
-              <p>Recuperados</p>
+              <p>Pacientes Sanos</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
+        </a>
         </div>
         <!-- ./col -->
         <div class="col-lg-6 col-6">
+          <a href="{% url 'PatientsListView' %}">
           <!-- small box -->
           <div class="small-box bg-warning medical-tags">
             <div class="inner">
@@ -71,22 +76,26 @@
             </div>
             <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
           </div>
+          </a>
         </div>
         <!-- ./col -->
         <div class=" col-lg-6 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger medical-tags">
-            <div class="inner">
-              <h3 class="number">{{sickUser}}</h3>
-    
-              <p>Pacientes enfermos</p>
+            <a href="{% url 'SicksListView' %}">
+            <!-- small box -->
+            <div class="small-box bg-danger medical-tags">
+              <div class="inner">
+                <h3 class="number">{{sickUser}}</h3>
+      
+                <p>Pacientes enfermos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <!-- <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> -->
+          </a>
           </div>
-        </div>
+  
         <!-- ./col -->
       </div>
     

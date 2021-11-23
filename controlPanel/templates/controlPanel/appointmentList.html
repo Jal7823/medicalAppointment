@@ -1,0 +1,58 @@
+{% extends 'controlPanel/controlPanel.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/controlPanel.css' %}">
+
+<div class="container">
+  <h1 class="display-6 text-bold text-center text-danger mb-4">Listado de pacientes</h1>
+</div>
+
+
+
+<div class="container-md">
+    <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Especialidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Sucursal</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% if user %}
+            {% for a in appointments  %}
+              <tr class="text-center">
+                  <td><a href="{% url 'PatientDetailView' a.user_id %}">{{a.name | upper}}</a></td>
+                  <td>{{a.lastName | upper}}</td>
+                  <td>{{a.specialty.name}}</td>
+                  <td>{{a.date|date:"d/m/Y" }}</td>
+                  <td>{{a.branchOffices.name}}</td>
+                  <td>
+                    <a href="{% url 'PatientDetailView' a.user_id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
+                    <a href="{% url 'UsersUpdateView' a.user_id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+            
+        </tbody>
+      </table>
+    
+</div>
+
+
+
+      
+{% endblock %}

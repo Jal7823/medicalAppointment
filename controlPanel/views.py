@@ -29,37 +29,60 @@ def controlPanel(request):
         Q(sick=False)
     ).count() -1
 
+
     # for appointment
-
-    #for appointment today
-
     date = datetime.datetime.now()
     fecha = date.strftime('%Y-%m-%d')
-    appointmentToDay = Appointment.objects.filter(date=fecha)
-    appointmentDiferentDay = Appointment.objects.filter(
-        ~Q(date=fecha)
-    )
-    appointmentCountToDay = Appointment.objects.filter(date=fecha).count() 
+    appointmentToDay = Appointment.objects.filter(date=fecha).count()
 
 
-    #for appointment months
 
-    appointmentMonth = Appointment.objects.all()
 
 
     context = {
         'countUser':countUser,
         'sickUser':sickUser,
         'cured':cured,
-        'appointmentToDay':appointmentToDay,
-        'appointmentCountToDay':appointmentCountToDay,
-        'appointmentMonth':appointmentMonth,
-        'appointmentDiferentDay':appointmentDiferentDay,
+        'appointmentMonth':appointmentToDay,
     }
 
     return render(request, 'controlPanel/controlPanel.html',context)
 
+class AppointmenToDay(ListView):
+    model = Appointment
+    template_name = "controlPanel/appointmentToDay.html"
 
+    
+    def get_context_data(self, **kwargs):
+        context = super(AppointmenToDay, self).get_context_data(**kwargs)
+    #for appointment today
+
+        date = datetime.datetime.now()
+        fecha = date.strftime('%Y-%m-%d')
+        appointmentToDay = Appointment.objects.filter(date=fecha)
+
+
+        #for appointment months
+
+        rest = Appointment.objects.all()
+
+        context['toDay'] =appointmentToDay
+        context['rest'] =rest
+        return context
+
+
+class AppointmentListView(ListView):
+    model = Appointment
+    template_name = "controlPanel/appointmentList.html"
+    
+    
+    def get_context_data(self, **kwargs):
+        context = super(AppointmentListView, self).get_context_data(**kwargs)
+        context['appointments'] = Appointment.objects.all()
+        return context
+    
+
+    
 
 class PatientsListView(ListView):
     model = Appointment
@@ -92,3 +115,26 @@ def projections(request):
         'users':users,
     }
     return render(request, 'controlPanel/projections.html',context)
+
+
+class SicksListView(ListView):
+    model = Usuario
+    template_name = "controlPanel/sicksDetail.html"
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(SicksListView, self).get_context_data(**kwargs)
+        sicks = Usuario.objects.filter(sick=True)
+        context['sicks'] = sicks
+        return context
+    
+class HealthyListView(ListView):
+    model = Usuario
+    template_name = "controlPanel/healthyDetail.html"
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(HealthyListView, self).get_context_data(**kwargs)
+        healthy = Usuario.objects.filter(sick=False)
+        context['healthy'] = healthy
+        return context
