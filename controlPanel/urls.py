@@ -1,13 +1,10 @@
-from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import path
+from django.contrib.auth.decorators import permission_required,login_required
+from .views import controlPanel,PatientsListView,PatientDetailView,UsersUpdateView,controlPanelBase,projections,SicksListView,HealthyListView,AppointmenToDay,AppointmentListView
 
-from .views import (AppointmentListView, AppointmenToDay, HealthyListView,
-                    PatientDetailView, PatientsListView, SicksListView,
-                    UsersUpdateView, controlPanel, controlPanelBase,
-                    projections)
 
 urlpatterns =[
-    path('',controlPanel,name='controlPanel'),
+    path('', controlPanel,name='controlPanel'),
     path('controlPanelBase/', controlPanelBase,name='controlPanelBase'),
     path('projections/', projections,name='projections'),
     path('PatientsListView/',PatientsListView.as_view(),name='PatientsListView'),
