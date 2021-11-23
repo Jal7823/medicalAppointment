@@ -7,7 +7,6 @@ from django.db.models import Avg, Max, Min, Q, Sum
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView, UpdateView
-
 from appointment.models import Appointment
 from usersApp.models import Usuario
 
