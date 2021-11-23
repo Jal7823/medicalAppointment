@@ -105,3 +105,13 @@ class SicksListView(ListView):
         context['sicks'] = sicks
         return context
     
+class HealthyListView(ListView):
+    model = Usuario
+    template_name = "controlPanel/healthyDetail.html"
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(HealthyListView, self).get_context_data(**kwargs)
+        healthy = Usuario.objects.filter(sick=False)
+        context['healthy'] = healthy
+        return context
