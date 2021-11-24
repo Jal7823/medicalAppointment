@@ -1,14 +1,14 @@
 import datetime
-
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg, Max, Min, Q, Sum
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
 from appointment.models import Appointment
 from usersApp.models import Usuario
+from doctors.models import Doctor
 
 # Create your views here.
 
@@ -176,3 +176,9 @@ class HealthyListView(ListView):
             return super(HealthyListView, self).dispatch(request, *args, **kwargs)
         else:    
             return redirect(to='index')
+
+class DoctorCreateView(CreateView):
+    model = Doctor
+    template_name = "controlPanel/createMedic.html"
+    fields ='__all__'
+    success_url = '/'   

@@ -46,3 +46,6 @@ def about(request):
         'title':title,
     }
     return render(request, 'about.html',context)
+
+
+

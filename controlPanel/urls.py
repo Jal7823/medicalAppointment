@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import permission_required,login_required
-from .views import controlPanel,PatientsListView,PatientDetailView,UsersUpdateView,controlPanelBase,projections,SicksListView,HealthyListView,AppointmenToDay,AppointmentListView
+from .views import controlPanel,PatientsListView,PatientDetailView,UsersUpdateView,controlPanelBase,projections,SicksListView,HealthyListView,AppointmenToDay,AppointmentListView,DoctorCreateView
 
 
 urlpatterns =[
@@ -14,4 +14,5 @@ urlpatterns =[
     path('HealthyListView/',HealthyListView.as_view(),name='HealthyListView'),
     path('PatientDetailView/<int:pk>',PatientDetailView.as_view(),name='PatientDetailView'),
     path('UsersUpdateView/<int:pk>',UsersUpdateView.as_view(),name='UsersUpdateView'),
+    path('DoctorCreateView/',DoctorCreateView.as_view(),name='DoctorCreateView')
 ]
