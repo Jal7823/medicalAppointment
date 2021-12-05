@@ -1,19 +1,49 @@
 import datetime
-
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg, Max, Min, Q, Sum
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
+from django.core.paginator import Paginator
 from appointment.models import Appointment
 from usersApp.models import Usuario
+from doctors.models import Doctor,Specialty
+from .forms import CreateMedicForms
 
 # Create your views here.
 
 def controlPanelBase(request):
-    return render(request, 'controlPanel/controlPanelBase.html')
+    cured = Usuario.objects.filter(
+        Q(sick=False)&
+        Q(isDoctor = False)
+    )
+    sick = Usuario.objects.filter(
+    Q(sick=True)&
+    Q(isDoctor = False)
+    )
+    patients = Usuario.objects.filter(
+        Q(sick=True) &
+        Q(isDoctor = False)
+    )
+    patientsCount = Usuario.objects.filter(
+    Q(isDoctor = False)
+    ).count()
+
+
+    specialty = Specialty.objects.all()
+
+
+    context = {
+        'cured':cured,
+        'sick':sick,
+        'patients':patients,
+        'patientsCount':patientsCount,
+        'specialty':specialty,
+
+    }
+    return render(request, 'controlPanel/controlPanelBase.html',context)
 
 def controlPanel(request):
 
@@ -22,28 +52,40 @@ def controlPanel(request):
         # for counts
         countUser= Usuario.objects.all().count()
         sickUser = Usuario.objects.filter(
-            Q(sick=True)
+            Q(sick=True) &
+            Q(isDoctor = False)
         ).count() 
 
         cured = Usuario.objects.filter(
-            Q(sick=False)
-        ).count() -1
-
+            Q(sick=False) &
+            Q(isDoctor = False)
+        ).count() 
 
         # for appointment
         date = datetime.datetime.now()
         fecha = date.strftime('%Y-%m-%d')
         appointmentToDay = Appointment.objects.filter(date=fecha).count()
 
+        if appointmentToDay:
+            patientsAll = Usuario.objects.filter(
+            Q(isDoctor = False)
+            )
 
+        else:
+            patientsAll = Usuario.objects.filter(
+                Q(isDoctor=False)
+            )[:6]
 
-
+        #for graph
+        data = [23,30,80,75,37,13,98,65,34,45,38,87]
 
         context = {
             'countUser':countUser,
             'sickUser':sickUser,
             'cured':cured,
             'appointmentMonth':appointmentToDay,
+            'patientsAll':patientsAll,
+            'data':data,
         }
 
         return render(request, 'controlPanel/controlPanel.html',context)
@@ -176,3 +218,32 @@ class HealthyListView(ListView):
             return super(HealthyListView, self).dispatch(request, *args, **kwargs)
         else:    
             return redirect(to='index')
+
+
+class SicksList(ListView):
+    model = Usuario
+    template_name = 'controlPanel/sicksList.html'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(SicksList, self).get_context_data(**kwargs)
+        context['patients'] = Usuario.objects.filter(
+            Q(sick = True) &
+            Q(isDoctor = False)
+        )
+        return context
+    
+
+class CuredList(ListView):
+    model = Usuario
+    template_name = 'controlPanel/curedList.html'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(CuredList, self).get_context_data(**kwargs)
+        context['patients'] = Usuario.objects.filter(
+            Q(sick = False ) &
+            Q(isDoctor = False)
+        )
+        return context
+    
