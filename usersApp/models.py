@@ -100,10 +100,8 @@ class Usuario(AbstractUser):
     def is_superuser(self):
         return self.user_administrator
 
-    def get_image(self):
-        if self.image:
-            return '{}{}'.format(MEDIA_URL, self.image)
-        return '{}{}'.format(STATIC_URL, 'img/empty.png')
+    def full_name(self):
+        return f'{self.name} {self.lastName}'
 
 
 

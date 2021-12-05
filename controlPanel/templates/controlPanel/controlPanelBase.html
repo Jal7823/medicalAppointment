@@ -114,6 +114,21 @@
                   <i class="text-white fas fa-user-injured nav-icon"></i>
                   <p class="text-white" >Listado de pacientes</p>
                 </a>
+                <a href="{% url 'CuredList' %}" class="nav-link">
+                  <i class="  nav-icon fas fa-smile-beam text-success"></i>
+                  <p class="text-white" >
+                    Pacientes sanos
+                    <i class="text-white  fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <a href="{% url 'SicksList' %}" class="nav-link">
+                  <i class="  nav-icon fas fa-virus text-danger"></i>
+                  <p class="text-white" >
+                    Pacientes enfermos
+                    <i class="text-white  fas fa-angle-left right"></i>
+                  </p>
+                </a>
+  
               </li>
             </ul>
             <li class="nav-item">
@@ -124,16 +139,17 @@
                   <i class="text-white  fas fa-angle-left right"></i>
                 </p>
               </a>
+
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{% url 'AppointmenToDay' %}" class="nav-link">
-                    <i class="text-white  far fa-circle nav-icon"></i>
+                    <i class="text-success  far fas fa-calendar-day nav-icon"></i>
                     <p class="text-white" >Citas para hoy</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="{% url 'AppointmentListView' %}" class="nav-link">
-                    <i class="text-white  far fa-circle nav-icon"></i>
+                    <i class="text-warning  far fa-calendar-alt nav-icon"></i>
                     <p class="text-white" >Citas para el mes</p>
                   </a>
                 </li>

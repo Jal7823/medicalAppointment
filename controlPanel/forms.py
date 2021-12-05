@@ -1,15 +1,12 @@
 from django import forms
-from doctors.models import Doctor
+from Usuarios.models import Usuario
 
 
 class CreateMedicForms(forms.ModelForm):
-    specialty = Doctor.objects.all()
+    specialty = Usuario.objects.all()
     class Meta:
-        model = Doctor
+        model = Usuario
         fields = ('__all__')
         widgets = {
-            'specialty':forms.Select(attrs={
-                                            'class':'form-select',
-                                            'aria-label':'Default select example'
-                                            }),
-}
+            'isDoctors':forms.
+        }

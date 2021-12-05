@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import permission_required,login_required
-from .views import controlPanel,PatientsListView,PatientDetailView,UsersUpdateView,controlPanelBase,projections,SicksListView,HealthyListView,AppointmenToDay,AppointmentListView,DoctorCreateView
+from .views import controlPanel,PatientsListView,PatientDetailView,UsersUpdateView,controlPanelBase,projections,SicksListView,HealthyListView,AppointmenToDay,AppointmentListView,DoctorCreateView,SicksList,CuredList
 
 
 urlpatterns =[
@@ -10,9 +10,12 @@ urlpatterns =[
     path('PatientsListView/',PatientsListView.as_view(),name='PatientsListView'),
     path('AppointmenToDay/',AppointmenToDay.as_view(),name='AppointmenToDay'),
     path('AppointmentListView/',AppointmentListView.as_view(),name='AppointmentListView'),
-    path('SicksListView/',SicksListView.as_view(),name='SicksListView'),
+    path('SicksDetail/',SicksListView.as_view(),name='SicksDetail'),
     path('HealthyListView/',HealthyListView.as_view(),name='HealthyListView'),
     path('PatientDetailView/<int:pk>',PatientDetailView.as_view(),name='PatientDetailView'),
     path('UsersUpdateView/<int:pk>',UsersUpdateView.as_view(),name='UsersUpdateView'),
-    path('DoctorCreateView/',DoctorCreateView.as_view(),name='DoctorCreateView')
+    path('DoctorCreateView/',DoctorCreateView.as_view(),name='DoctorCreateView'),
+    path('SicksList/',SicksList.as_view(),name='SicksList'),
+    path('CuredList/',CuredList.as_view(),name='CuredList'),
+
 ]

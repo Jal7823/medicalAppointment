@@ -13,7 +13,20 @@ from doctors.models import Doctor
 # Create your views here.
 
 def controlPanelBase(request):
-    return render(request, 'controlPanel/controlPanelBase.html')
+    cured = Usuario.objects.filter(
+        Q(sick=False)&
+        Q(isDoctor = False)
+    )
+    sick = Usuario.objects.filter(
+    Q(sick=True)&
+    Q(isDoctor = False)
+    )
+    context = {
+        'cured':cured,
+        'sick':sick,
+
+    }
+    return render(request, 'controlPanel/controlPanelBase.html',context)
 
 def controlPanel(request):
 
@@ -22,12 +35,14 @@ def controlPanel(request):
         # for counts
         countUser= Usuario.objects.all().count()
         sickUser = Usuario.objects.filter(
-            Q(sick=True)
+            Q(sick=True) &
+            Q(isDoctor = False)
         ).count() 
 
         cured = Usuario.objects.filter(
-            Q(sick=False)
-        ).count() -1
+            Q(sick=False) &
+            Q(isDoctor = False)
+        ).count() 
 
 
         # for appointment
@@ -182,3 +197,32 @@ class DoctorCreateView(CreateView):
     template_name = "controlPanel/createMedic.html"
     fields ='__all__'
     success_url = '/'   
+
+
+class SicksList(ListView):
+    model = Usuario
+    template_name = 'controlPanel/sicksList.html'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(SicksList, self).get_context_data(**kwargs)
+        context['patients'] = Usuario.objects.filter(
+            Q(sick = True) &
+            Q(isDoctor = False)
+        )
+        return context
+    
+
+class CuredList(ListView):
+    model = Usuario
+    template_name = 'controlPanel/curedList.html'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(CuredList, self).get_context_data(**kwargs)
+        context['patients'] = Usuario.objects.filter(
+            Q(sick = False ) &
+            Q(isDoctor = False)
+        )
+        return context
+    
