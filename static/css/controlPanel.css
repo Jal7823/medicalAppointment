@@ -53,3 +53,8 @@
     border-radius:50%;
     object-fit:cover;
 }
+
+
+.img-patient{
+    object-fit:cover;
+}

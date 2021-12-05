@@ -6,6 +6,7 @@ from django.db.models import Avg, Max, Min, Q, Sum
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
+from django.core.paginator import Paginator
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from doctors.models import Doctor,Specialty
@@ -29,6 +30,7 @@ def controlPanelBase(request):
     patientsCount = Usuario.objects.filter(
     Q(isDoctor = False)
     ).count()
+
 
     specialty = Specialty.objects.all()
 
@@ -60,11 +62,22 @@ def controlPanel(request):
         ).count() 
 
 
+
+
         # for appointment
         date = datetime.datetime.now()
         fecha = date.strftime('%Y-%m-%d')
         appointmentToDay = Appointment.objects.filter(date=fecha).count()
 
+        if appointmentToDay:
+            patientsAll = Usuario.objects.filter(
+            Q(isDoctor = False)
+            )
+
+        else:
+            patientsAll = Usuario.objects.filter(
+                Q(isDoctor=False)
+            )
 
 
 
@@ -74,6 +87,7 @@ def controlPanel(request):
             'sickUser':sickUser,
             'cured':cured,
             'appointmentMonth':appointmentToDay,
+            'patientsAll':patientsAll,
         }
 
         return render(request, 'controlPanel/controlPanel.html',context)

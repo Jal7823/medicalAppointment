@@ -7,63 +7,23 @@
 
 
 
-<script>
-  $(document).ready(function(){
-    let ctx = document.getElementById('myChart').getContext('2d');
-    let myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: [{% for i in specialty %}'{{i.name}}',{% endfor %}],
-            datasets: [{
-                label: 'Pacientes enfermos',
-                data: [{% for i in patientsCount %}{{i.name}},{% endfor %}],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                color: [
-                  'hex(#fff)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-  });
-</script>
 
 
 
 
 {% block content %}
 
-<canvas id="myChart" height="360" style="height: 180px; display: block; width: 554px;" width="1108" class="chartjs-render-monitor"></canvas>
+
+
+
 
 <!-- medic loged -->
-<div class="container">
-  <div class="row d-flex justify-content-center aling-item-center">
-    <div class="col-md-8 display-3 d-flex align-items-center" >Dr. {{user.name}}</div>
-    <div class="col-md-4 d-flex justify-content-center"><img class="img-doctor" src="{{ request.user.image.url}}" alt=""></div>
+  <div class="container">
+    <div class="row d-flex justify-content-center aling-item-center">
+      <div class="col-md-8 display-3 d-flex align-items-center" >Dr. {{user.name}}</div>
+      <div class="col-md-4 d-flex justify-content-center"><img class="img-doctor" src="{{ request.user.image.url}}" alt=""></div>
+    </div>
   </div>
-</div>
 <!-- medic loged -->
 
   <!-- controls apointmenst -->
@@ -136,7 +96,59 @@
 
   <!-- controls apointmenst -->
 
+<!-- patient -->
+  <div class="container ">
+    <div class="card card-solid mt-4">
+      <div class="card-body pb-0">
+        <div class="row">
+          {% for p in patientsAll %}
+          <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+            <div class="card bg-light d-flex flex-fill">
+              <div class="card-header text-muted border-bottom-0">
+                Paciente 
+              </div>
+              <div class="card-body pt-0">
+                <div class="row">
+                  <div class="col-7">
+                    <h2 class="lead"><b class="text-bold">{{p.name|title}}</b></h2>
+                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                      <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-id-card"></i></span> D.N.I: {{p.dni}}</li>
+                      <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: {{p.direc}}, {{p.loc}}, {{p.pcia}}</li>
+                      <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono #: + 54 - {{p.tlf}}</li>
+                      </ul>
+                      <p class="text-muted text-sm">
+                        <b class="text-danger">Patologia: 
+                          {% for e in p.patology.all  %}
+                            {{e.name}} 
+                          {% endfor %}
+                        </b>
+                      </p>
+                    </div>
+                  <div class="col-5 text-center">
+                    <img src="{{p.image.url}}" alt="user-avatar" class="img-circle img-fluid img-patient">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="text-right">
+                  <a href="#" class="btn btn-sm bg-teal">
+                    <i class="fas fa-comments"></i>
+                  </a>
+                  <a href="{% url 'PatientDetailView' p.id %}" class="btn btn-sm btn-primary">
+                    <i class="fas fa-user"></i> Ver Historia
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
 
+  </div>
+
+<!-- patient -->
 
 
 
