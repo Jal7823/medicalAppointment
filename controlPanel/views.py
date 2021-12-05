@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
 from appointment.models import Appointment
 from usersApp.models import Usuario
-from doctors.models import Doctor
+from doctors.models import Doctor,Specialty
 from .forms import CreateMedicForms
 
 # Create your views here.
@@ -22,9 +22,23 @@ def controlPanelBase(request):
     Q(sick=True)&
     Q(isDoctor = False)
     )
+    patients = Usuario.objects.filter(
+        Q(sick=True) &
+        Q(isDoctor = False)
+    )
+    patientsCount = Usuario.objects.filter(
+    Q(isDoctor = False)
+    ).count()
+
+    specialty = Specialty.objects.all()
+
+
     context = {
         'cured':cured,
         'sick':sick,
+        'patients':patients,
+        'patientsCount':patientsCount,
+        'specialty':specialty,
 
     }
     return render(request, 'controlPanel/controlPanelBase.html',context)
