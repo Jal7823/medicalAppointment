@@ -246,4 +246,4 @@ class CuredList(ListView):
             Q(isDoctor = False)
         )
         return context
-    
+

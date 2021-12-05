@@ -82,7 +82,7 @@ form{
 }
 
 .logo{
-    width: 150px;
+    width: 90px;
     height: auto;
     padding:1rem;
 }
@@ -99,5 +99,6 @@ form{
 }
 
 .logo-login{
-	background: #fff;
+	width:90px;
+	height:auto;
 }

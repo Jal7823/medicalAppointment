@@ -25,17 +25,10 @@
                   <form control="" class="form-group" method='POST'>
                     {% csrf_token %}
                       {{form | crispy}}
-                    <div class="row d-flex justify-content-center mt-2">
-                      <input type="checkbox" name="remember_me" id="remember_me" class="">
-                      <span for="remember_me">Recuerdame!</span>
-                    </div>
                     <div class="row d-flex justify-content-center">
-                      <input type="submit" value="Iniciar sesion" class="btn">
+                      <input type="submit" value="Registrarme" class="btn">
                     </div> 
                   </form>
-                </div>
-                <div class="row">
-                  <p>No tienes cuenta? <a href="{% url 'registro' %}">Registrate!</a></p>
                 </div>
               </div>
             </div>
