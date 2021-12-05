@@ -9,6 +9,7 @@
 :root{
     --firtsColor:#E6203A;
     --secondsColor:#33287C;
+    --sidebarColor:#070C1B;
 }
 
 
@@ -30,11 +31,12 @@ body{
 
 
 
+
 /* /Globals */
 
 
 .logo{
-    width: 150px;
+    width: 90px;
     height: auto;
     padding:1rem;
 }

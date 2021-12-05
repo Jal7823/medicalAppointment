@@ -13,7 +13,10 @@ class formsAppointment(forms.ModelForm):
         widgets = {
             'date':forms.DateInput(attrs={
                 'type': 'date',
-                'class':'datetimepicker-input',
+                'class':'datetimepicker',
+                'data-toggle':"datepicker",
+                'autocomplete':'off',
+                
             }),
         }
         labels = {

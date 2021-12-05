@@ -15,8 +15,8 @@
   <!-- Main Content -->
 	<div class="container-fluid">
 		<div class="row main-content bg-success text-center">
-			<div class="col-md-4 text-center company__info">
-				<img class="logo-login" src="{% static 'img/logos/logo.png' %}" alt="">
+			<div class="col-md-4 text-center company__info d-flex justify-content-center align-items-center">
+				<img class="logo-login" src="{% static 'img/logos/logo2.png' %}" alt="">
 				<h4 class="company_title">Urgencias Medical Care</h4>
 			</div>
 			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
@@ -28,10 +28,6 @@
 						<form control="" class="form-group" method='POST'>
 							{% csrf_token %}
 								{{form | crispy}}
-							<div class="row d-flex justify-content-center mt-2">
-								<input type="checkbox" name="remember_me" id="remember_me" class="">
-								<span for="remember_me">Recuerdame!</span>
-							</div>
 							<div class="row d-flex justify-content-center">
 								<input type="submit" value="Iniciar sesion" class="btn">
 							</div> 

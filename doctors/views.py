@@ -34,9 +34,6 @@ def detailSpecialty(request,id):
         'branchOffices':branchOffices,
     }
 
-    print(specialtyQuery)
-    print(branchOffices)
-
     return render(request, 'branchOffices/specialtyFilter.html',context)
 
 
