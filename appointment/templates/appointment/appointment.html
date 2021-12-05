@@ -9,9 +9,8 @@
 
 {% block content %}
 <!-- tempus -->
-<script src="{% static 'lib/moment/moment.js' %}" ></script>
-<script src="{% static 'lib/tempus/tempusdominus-bootstrap-4.min.js' %}" ></script>
-<link rel="stylesheet" href="{% static 'lib/tempus/tempusdominus-bootstrap-4.min.css' %}">
+
+
 
 <!-- /tempus -->
 
@@ -34,11 +33,15 @@
     </div>
 </div>
 
-
-<script type="text/javascript">
+<script>
     $(function () {
-        $('#datetimepicker1').datetimepicker();
+      $("#id_date").datetimepicker({
+        format: 'YYYY/MM/DD',
+      });
+
     });
-</script>
-      
+
+
+    
+  </script>
 {% endblock %}
