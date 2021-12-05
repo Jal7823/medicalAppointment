@@ -58,3 +58,17 @@
 .img-patient{
     object-fit:cover;
 }
+
+
+.separator{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+
+
+ hr{
+    width: 20%;
+
+}

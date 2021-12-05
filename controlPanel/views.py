@@ -61,9 +61,6 @@ def controlPanel(request):
             Q(isDoctor = False)
         ).count() 
 
-
-
-
         # for appointment
         date = datetime.datetime.now()
         fecha = date.strftime('%Y-%m-%d')
@@ -77,10 +74,10 @@ def controlPanel(request):
         else:
             patientsAll = Usuario.objects.filter(
                 Q(isDoctor=False)
-            )
+            )[:6]
 
-
-
+        #for graph
+        data = [23,30,80,75,37,13,98,65,34,45,38,87]
 
         context = {
             'countUser':countUser,
@@ -88,6 +85,7 @@ def controlPanel(request):
             'cured':cured,
             'appointmentMonth':appointmentToDay,
             'patientsAll':patientsAll,
+            'data':data,
         }
 
         return render(request, 'controlPanel/controlPanel.html',context)

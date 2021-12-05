@@ -13,8 +13,10 @@
 
 {% block content %}
 
-
-
+<script src="{% static 'lib/code/highcharts.js' %}"></script>
+<script src="{% static 'lib/code/modules/exporting.js' %}"></script>
+<script src="{% static 'lib/code/modules/export-data.js' %}"></script>
+<script src="{% static 'lib/code/modules/accessibility.js' %}"></script>
 
 
 <!-- medic loged -->
@@ -26,8 +28,9 @@
   </div>
 <!-- medic loged -->
 
-  <!-- controls apointmenst -->
 
+
+<!-- controls apointmenst -->
   <div class="container mt-4">
     <div class="row">
       <div class="col-lg-3 col-6">
@@ -93,9 +96,21 @@
     </div>
   
   </div>
+<!-- controls apointmenst -->
 
-  <!-- controls apointmenst -->
+<!-- graphi -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div id="container"></div>
+    </div>
+  </div>
+</div>
+<!-- /graphi -->
+<div class="separator m-4">
+  <hr class="m-2"><p class="display-4 text-danger">Pacientes</p><hr class="m-2">
 
+</div>
 <!-- patient -->
   <div class="container ">
     <div class="card card-solid mt-4">
@@ -147,9 +162,71 @@
     </div>
 
   </div>
-
 <!-- patient -->
 
+
+
+
+
+
+<script>
+  Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Citas del Año'
+    },
+    subtitle: {
+        text: 'citas por mes'
+    },
+    xAxis: {
+        categories: [
+            'Enero',
+            'Febrero',
+            'Marzo',
+            'Abril',
+            'Mayo',
+            'Junio',
+            'Julio',
+            'Agosto',
+            'Septiembre',
+            'Octubre',
+            'Noviembre',
+            'Diciembre'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Citas'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} cita</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'atendidas',
+        showInLegend:false,
+        colorByPoint:true,
+        data: 
+          {{data|safe}},
+      
+    }]
+});
+</script>
 
 
 
