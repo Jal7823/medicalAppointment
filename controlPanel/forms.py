@@ -1,12 +1,15 @@
 from django import forms
-from Usuarios.models import Usuario
+from usersApp.models import Usuario
 
 
 class CreateMedicForms(forms.ModelForm):
-    specialty = Usuario.objects.all()
     class Meta:
         model = Usuario
-        fields = ('__all__')
+        fields = ('username','name','lastName','password')
+        labels = {
+            'lastName':'Apellido',
+        }
         widgets = {
-            'isDoctors':forms.
+            'isDoctors':forms.TextInput(attrs={'default':True}),
+            'password':forms.PasswordInput(),
         }

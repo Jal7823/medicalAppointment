@@ -9,6 +9,7 @@ from django.views.generic import DeleteView, DetailView, ListView, UpdateView,Cr
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from doctors.models import Doctor
+from .forms import CreateMedicForms
 
 # Create your views here.
 
@@ -191,12 +192,6 @@ class HealthyListView(ListView):
             return super(HealthyListView, self).dispatch(request, *args, **kwargs)
         else:    
             return redirect(to='index')
-
-class DoctorCreateView(CreateView):
-    model = Doctor
-    template_name = "controlPanel/createMedic.html"
-    fields ='__all__'
-    success_url = '/'   
 
 
 class SicksList(ListView):

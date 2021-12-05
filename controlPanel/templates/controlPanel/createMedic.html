@@ -10,7 +10,7 @@
 {% block content %}
 
 <div class="container">
-    <form method='POST' enctype="multipart/formdata" >
+    <form method='POST' enctype="multipart/formdata w-50" >
         {% csrf_token %}
             {{form | crispy}}
         <input type="submit" class="btn btn-success" value="Guardar">
