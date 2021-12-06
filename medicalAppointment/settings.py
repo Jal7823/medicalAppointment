@@ -101,25 +101,25 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql', 
-#         'NAME': 'medicalService',
-#         'USER': 'root',
-#         'PASSWORD': '7823',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'medicalService',
+        'USER': 'root',
+        'PASSWORD': '7823',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
+    }
+}
 
 
 
