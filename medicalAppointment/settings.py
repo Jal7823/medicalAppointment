@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-0k-)io5ggcv0%-^up8r$#+yr(z4q1z^$69hna%s-zo9)c5_)r9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['medicalAppointment.pythonanywhere.com']
 
 
 #User
@@ -112,10 +112,10 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'medicalService',
-        'USER': 'root',
-        'PASSWORD': '7823',
-        'HOST': 'localhost',
+        'NAME': 'medicalAppointme$medicalService',
+        'USER': 'medicalAppointme',
+        'PASSWORD': '23051988joswelj',
+        'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
