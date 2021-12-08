@@ -46,8 +46,12 @@
                   </li>
                   {% if user.is_authenticated %}
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'appointmentList' %}">Citas</a>
+                    <a class="nav-link" href="{% url 'appointment' %}">Pedir cita</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'appointmentList' %}">Ver citas</a>
+                  </li>
+
                   {% endif %}
 
                   

@@ -139,10 +139,11 @@
       <div class="card-group bl-0 ml-2">
         {% for s in specialty %}
         <div class="card card-container m-4">
+            <a href="{% url 'detailSpecialty' s.id %}" class="d-flex aling-item-center justify-content-center"> 
             <i class="fa {{s.icon}} text-danger h1 m-auto p-4 " ></i>
             <div class="card-body">
-            <a href="{% url 'detailSpecialty' s.id %}"><h5 class="card-title text-center">{{s.name}}</h5></a>
-          </div>
+            <h5 class="card-title text-center">{{s.name}}</h5></a>
+            </div>
         </div>
         {% endfor %}
       </div>
