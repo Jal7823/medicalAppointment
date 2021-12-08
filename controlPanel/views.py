@@ -19,16 +19,20 @@ def controlPanelBase(request):
         Q(sick=False)&
         Q(isDoctor = False)
     )
+
     sick = Usuario.objects.filter(
     Q(sick=True)&
     Q(isDoctor = False)
     )
+
     patients = Usuario.objects.filter(
         Q(sick=True) &
         Q(isDoctor = False)
     )
+
     patientsCount = Usuario.objects.filter(
     Q(isDoctor = False)
+    
     ).count()
 
 
@@ -50,15 +54,20 @@ def controlPanel(request):
     if request.user.isDoctor or request.user.user_administrator:
 
         # for counts
-        countUser= Usuario.objects.all().count()
+        countUser= Usuario.objects.filter(
+            Q(user_administrator=False)
+        ).count()
+
         sickUser = Usuario.objects.filter(
             Q(sick=True) &
-            Q(isDoctor = False)
+            Q(isDoctor = False)&
+            Q(user_administrator=False)
         ).count() 
 
         cured = Usuario.objects.filter(
             Q(sick=False) &
-            Q(isDoctor = False)
+            Q(isDoctor = False)&
+            Q(user_administrator=False)
         ).count() 
 
         # for appointment
@@ -141,7 +150,11 @@ class PatientsListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super(PatientsListView, self).get_context_data(**kwargs)
-        context['usersAppointment'] = Appointment.objects.all()
+        context['usersAppointment'] = Usuario.objects.filter(
+            Q(user_administrator=False)&
+            Q(isDoctor=False)
+
+        )
         return context
 
     
@@ -193,6 +206,7 @@ class SicksListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SicksListView, self).get_context_data(**kwargs)
         sicks = Usuario.objects.filter(sick=True)
+
         context['sicks'] = sicks
         return context
 
