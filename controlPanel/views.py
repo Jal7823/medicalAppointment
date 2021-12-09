@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from doctors.models import Doctor,Specialty
-from .forms import CreateMedicForms
+from .forms import CreateMedicForms,UpdatePatient
 
 # Create your views here.
 
@@ -167,6 +167,11 @@ class PatientsListView(ListView):
 class PatientDetailView(DetailView):
     model = Usuario
     template_name = "controlPanel/patientsDetail.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(PatientDetailView, self).get_context_data(**kwargs)
+        return context
+
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.isDoctor or request.user.user_administrator:
@@ -176,8 +181,8 @@ class PatientDetailView(DetailView):
 
 class UsersUpdateView(UpdateView):
     model = Usuario
-    fields = ['name','lastName','dni','doctors','patology','sick','history']
     template_name = "controlPanel/patientsUpdate.html"
+    form_class =UpdatePatient
     success_url=reverse_lazy('PatientsListView')
 
     def dispatch(self, request, *args, **kwargs):

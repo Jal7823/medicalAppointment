@@ -26,6 +26,7 @@
             <th scope="col">Especialidad</th>
             <th scope="col">Fecha</th>
             <th scope="col">Sucursal</th>
+            <th scope="col">Imagen</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -39,6 +40,7 @@
                   <td>{{a.specialty.name}}</td>
                   <td>{{a.date|date:"d/m/Y" }}</td>
                   <td>{{a.branchOffices.name}}</td>
+                  <td><img class="img-patient rounded" src="{{a.image.url}}" alt=""></td>
                   <td>
                     <a href="{% url 'PatientDetailView' a.id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
                     <a href="{% url 'UsersUpdateView' a.id %}"><i class="fa fa-edit text-white bg-warning p-2 rounded"></i></a>
