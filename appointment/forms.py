@@ -10,15 +10,6 @@ class formsAppointment(forms.ModelForm):
         model = Appointment
         fields = '__all__'
         exclude = ('user',)
-        widgets = {
-            'date':forms.DateInput(attrs={
-                'type': 'date',
-                'class':'datetimepicker',
-                'data-toggle':"datepicker",
-                'autocomplete':'off',
-                
-            }),
-        }
         labels = {
             'specialty':'Especialidad',
             'date':'Fecha',
