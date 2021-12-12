@@ -1,6 +1,10 @@
 from django.contrib.auth.views import LoginView,LogoutView
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
 from django.shortcuts import render,redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm,UpdateProfileUser
+from .models import Usuario
+
 
 
 class LoginFromView(LoginView):
@@ -52,3 +56,17 @@ def formulario(request):
         form = CustomUserCreationForm()
 
     return render(request,'registration.html',{'form':form})
+
+
+
+
+class UserProfile(UpdateView):
+    model = Usuario
+    form_class = UpdateProfileUser
+    template_name = 'usersApp/userProfile.html'
+    success_url=reverse_lazy('index')
+
+
+class DetailUserProfile(DeleteView):
+    model = Usuario
+    template_name = 'usersApp/userDetailProfile.html'

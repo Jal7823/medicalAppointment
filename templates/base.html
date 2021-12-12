@@ -38,42 +38,66 @@
                   <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
                   </li>
+                  <!-- appointment -->
+                  {% if user.is_authenticated %}
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Citas
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'appointment' %}">Pedir citar</a></li>
+                      <li><a class="dropdown-item" href="{% url 'appointmentList' %}">Ver cita</a></li>
+                    </ul>
+                  </li>               
+                  <!-- /appointment -->
+                  {% endif %}
+
+                  <!-- branchoffice -->
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'branchOffices' %}">Sucursales</a>
                   </li>
+                  <!-- branchoffice -->
+                  
+                  <!-- about -->
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'about' %}">Conocenos</a>
                   </li>
-                  {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'appointment' %}">Pedir cita</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'appointmentList' %}">Ver citas</a>
-                  </li>
+                  <!-- about -->
 
-                  {% endif %}
-
-                  
+                  <!-- Admin Dashboard -->
                   {% if user.is_superuser %}
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'controlPanel' %}">Panel</a>
-                  </li>
+                  </li>  
+                  {% endif %}
+                  <!-- Admin Dashboard -->
 
-                    
+
+                  <!-- user -->
+                  
+                  {% if user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      @ {{user.username}}
+                    </a>
+                    <ul class="dropdown-menu ml-4" aria-labelledby="navbarDropdown">
+                      <li><a class="nav-item dropdown-item nav-link" href="{% url 'DetailUserProfile' user.id %}">Perfil</a></li>
+
+                        <li class="nav-item" ><hr class="dropdown-divider"></li>
+                      <li><a class="nav-item dropdown-item nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+                    {% else %}
+
+                      <li><a class=" nav-item dropdown-item" href="{% url 'login' %}">Login</a></li>
+                      <li class="nav-item" ><hr class="dropdown-divider"></li>
+                      <li><a class=" nav-item dropdown-item" href="{% url 'registro' %}">Registrarme</a></li>
+                    </ul>
+                  </li>               
                   {% endif %}
 
-                  {% if user.is_authenticated %}
-                  <li class="nav-item d-flex">
-                     <a class="nav-link active" aria-current="page" href=""> @ {{user.username}}</a>
-                       <a class="nav-link" href="{% url 'logout' %}">/ logout</a>
-                    {% else %}
-                      <a class="nav-link" href="{% url 'login' %}">Login</a>
-                  </li>
-                    {% endif %}
-                    
-
-                      
+                  <!-- /user -->
+                  </ul>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{title}}{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/UserDetailProfile.css' %}">
+
+
+<div class="container">
+    <div class="container">
+        <h1 class="display-4 text-center text-danger text-bold">Mis datos</h1>
+    </div>
+</div>      
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- patient -->
+  <div class="container ">
+    <div class="card card-solid mt-4">
+      <div class="card-body pb-0">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
+            <div class="card w-100 bg-light d-flex flex-fill">
+              <div class="card-body pt-0">
+                <div class="row">
+                  <div class="col-12 mt-4">
+                    <div class="d-flex justify-content-between">
+                      <h2 class="lead"><b class="text-bold">{{object.name|title}} {{object.lastName|title}}</b>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                          <li class="small mt-4"><span class="fa-li"><i class="fas fa-lg fa-id-card"></i></span> D.N.I: {{object.dni}}</li>
+                          <li class="small mt-4"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: {{p.direc}}, {{object.loc}}, {{object.pcia}}</li>
+                          <li class="small mt-4"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono #: + 54 - {{object.tlf}}</li>
+    
+                        </ul>
+  
+                      </h2>
+                      <img src="{{object.image.url}}" alt="user-avatar" class="img-patient rounded img-fluid img-patient">
+  
+                    </div>
+                      <hr class="w-100">
+                    </div>
+                    
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex justify-content-end">
+                  <a href="{% url 'userProfile' object.id %}" class="btn btn-sm btn-primary">
+                  <i class="fas fa-edit"></i>
+                   Editar mi perfil
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- patient -->
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+      
+{% endblock %}
