@@ -42,13 +42,16 @@
 </div>
 
 <script>
+  let toDay = new Date();
+  let toDayFull = toDay.getDate() + "/" + (toDay.getMonth() +1) + "/" + toDay.getFullYear();
+
   $(function () {
     $("#id_date").datetimepicker({
       format: 'd/m/Y',
       startDate:'+2021/12/12',
       lang:'es',
       timepicker:false,
-      minDate:'2021/12/11',
+      minDate:toDayFull,
       //maxDate:
       //minTime:
       //maxTime:
