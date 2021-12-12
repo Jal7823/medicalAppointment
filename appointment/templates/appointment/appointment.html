@@ -10,6 +10,14 @@
 {% block content %}
 <!-- tempus -->
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+  
+<!-- datapicker -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
 
 <!-- /tempus -->
@@ -26,22 +34,29 @@
             {% csrf_token %}
                 {{form | crispy}}
                 <div class="d-flex justify-content-center">
-                    <input class="btn btn-danger w-25 " type='submit' value="Registrar cita">
-
+                    <input class="btn btn-danger  " type='submit' value="Guardar">
                 </div>
         </form>
     </div>
 </div>
 
 <script>
-    $(function () {
-      $("#id_date").datetimepicker({
-        format: 'YYYY/MM/DD',
-      });
+  let toDay = new Date();
+  let toDayFull = toDay.getDate() + "/" + (toDay.getMonth() +1) + "/" + toDay.getFullYear();
+
+  $(function () {
+    $("#id_date").datetimepicker({
+      format: 'd/m/Y',
+      startDate:'+2021/12/12',
+      lang:'es',
+      timepicker:false,
+      minDate:toDayFull,
+      //maxDate:
+      //minTime:
+      //maxTime:
 
     });
+  });
+</script>
 
-
-    
-  </script>
 {% endblock %}

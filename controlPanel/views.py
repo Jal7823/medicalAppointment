@@ -238,7 +238,6 @@ class HealthyListView(ListView):
         else:    
             return redirect(to='index')
 
-
 class SicksList(ListView):
     model = Usuario
     template_name = 'controlPanel/sicksList.html'
@@ -252,7 +251,6 @@ class SicksList(ListView):
         )
         return context
     
-
 class CuredList(ListView):
     model = Usuario
     template_name = 'controlPanel/curedList.html'
