@@ -47,8 +47,16 @@
                           <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono #: + 54 - {{object.tlf}}</li>
                           <li class="small mt-2">
                             <b class="text-danger">Patologia: 
-                            {% for p in object.patology.all  %}
-                                <span class="text-danger">{{p.name}}</span>
+                              
+                              
+                              
+                              {% for p in object.patology.all  %}
+                                {% if p %}
+                                  <span class="text-danger">{{p.name}}</span>
+                                {% else %}
+                                  <span class="text-danger">sin patologia</span>
+                                {% endif %}
+
                             {% endfor %}
                             </b>
                           </li>

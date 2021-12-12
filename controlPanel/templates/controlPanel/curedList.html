@@ -32,7 +32,7 @@
           
             {% for a in patients  %}
               <tr class="text-center">
-                  <td><a href="#">{{a.name | upper}}</a></td>
+                  <td><a href="{% url 'PatientDetailView' a.id  %}">{{a.name | upper}}</a></td>
                   <td>{{a.lastName | upper}}</td>
                   <td class="text-center">
                     <a href="{% url 'PatientDetailView' a.id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
