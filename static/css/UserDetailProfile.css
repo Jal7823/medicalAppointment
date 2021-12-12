@@ -1,3 +1,7 @@
+:root{
+    --firtsColor:#1C2536;
+
+}
 .img-patient{
     width:200px;
     height:200px;
@@ -11,6 +15,41 @@
 
 }
 
-.container{
+.info{
     margin-bottom: 6rem;
+}
+
+
+
+
+
+/* card */
+
+.membership{
+    width: auto;
+    height:300px;
+}
+
+
+.data{
+    background:var(--firtsColor);
+    border-radius:5px 0px 0px 5px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.items{
+    color: #fff;
+    font-size:30px;
+}
+
+.logo2{
+    border-radius:0px 5px 5px 0px;
+
+}
+
+.logoCard{
+    width:90px;
+    height: auto;
 }
