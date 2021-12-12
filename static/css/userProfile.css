@@ -1,0 +1,15 @@
+.container-form{
+    margin-bottom: 6rem;
+
+}
+
+.h2{
+    font-size:60px;
+}
+
+.container-form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

@@ -57,3 +57,20 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+
+
+class UpdateProfileUser(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ('name','lastName','image','dni','direc','loc','pcia','tlf')
+        labels = {
+            'name':'Nombre',
+            'lastName':'Apellido',
+            'direc':'Direccion',
+            'loc':'Localidad',
+            'pcia':'Provincia',
+            'tlf':'Telefono',
+        }
+

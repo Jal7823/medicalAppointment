@@ -9,17 +9,63 @@
 
 {% block content %}
 
-<div class="container mb-4">
-    <div class="form-container d-flex justify-content-center">
-        <form method='POST' class="w-50" >
-            {% csrf_token %}
-                {{form | crispy}}
-                <input type="submit" class="btn btn-danger">
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <!-- patient -->
+  <div class="container ">
+      <form method='post'>
+          {% csrf_token %}
+            <div class="card card-solid mt-4">
+            <div class="card-body pb-0">
+                <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
+                    <div class="card w-100 bg-light d-flex flex-fill">
+                    <div class="card-header text-bold h3 border-bottom-0 text-danger">
+                        Historial del paciente 
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-12 ">
+                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="small mt-2">{{ form.name|as_crispy_field }}</li>
+                                <li class="small mt-2">{{ form.lastName|as_crispy_field }}</li>
+                                <li class="small mt-2">{{ form.dni|as_crispy_field }}</li>
+                                    <hr class="w-100">
+                                <li class="small mt-2">{{ form.doctors|as_crispy_field }}</li>
+                                <li class="small mt-2">{{ form.sick|as_crispy_field }}</li>
+                                <li class="text-danger">{{ form.patology|as_crispy_field }}</li>
+                            </ul>
+                            <hr class="w-100">
+                            <p class="text-muted text-m text-bold"> Historial medico:
+                                <p class="text-justify">
+                                    {{ form.history|as_crispy_field }}
+                                </p>
+                            </p>
+
+                        </div>
+                            
+                        </div>
+                        <div class='d-flex d-flex justify-content-end'>
+                        <input type="submit" value="Guardar" class='btn btn-primary '>
+
+                        </div>
         </form>
-    
+                    </div>
+                    </div>
+                </div>
+                </div>
+    </div>
+    </div>
+
+  </div>
+<!-- patient -->
+
+        </div>
     </div>
 </div>
-
 
       
 {% endblock %}

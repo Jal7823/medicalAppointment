@@ -10,90 +10,110 @@
 {% block content %}
 
 
+<link rel="stylesheet" href="{% static 'css/PatientDetailView.css' %}">
+
+
+<div class="container">
+    <div class="container">
+        <h1 class="display-4 text-center text-danger text-bold">Datos del Paciente</h1>
+    </div>
+</div>      
+
+
 
 
 
 <div class="container">
-
-    
-        <div class="container">
-          <h1 class="display-4 text-center text-danger text-bold">Datos del Paciente</h1>
-        </div>
-      
-
     <div class="row">
-        <div class="col-md-8 offset-md-2 mt-5">
+        <div class="col-12">
+            <!-- patient -->
+  <div class="container ">
+    <div class="card card-solid mt-4">
+      <div class="card-body pb-0">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
+            <div class="card w-100 bg-light d-flex flex-fill">
+              <div class="card-header text-bold h3 border-bottom-0 text-danger">
+                Historial del paciente 
+              </div>
+              <div class="card-body pt-0">
+                <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex justify-content-between">
+                      <h2 class="lead"><b class="text-bold">{{object.name|title}} {{object.lastName|title}}</b>
+                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                          <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-id-card"></i></span> D.N.I: {{object.dni}}</li>
+                          <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: {{p.direc}}, {{object.loc}}, {{object.pcia}}</li>
+                          <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono #: + 54 - {{object.tlf}}</li>
+                          <li class="small mt-2">
+                            <b class="text-danger">Patologia: 
+                            {% for p in object.patology.all  %}
+                                <span class="text-danger">{{p.name}}</span>
+                            {% endfor %}
+                            </b>
+                          </li>
+    
+                        </ul>
+  
+                      </h2>
+                      <img src="{{object.image.url}}" alt="user-avatar" class="img-patient img-fluid img-patient">
+  
+                    </div>
+  
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-center"></th>
-                            <th class="text-center">Datos</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            
-                            <td class="text-bold">Nombre</td>
-                            <td class="text-center">{{object.name}}</td>
-                        
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Apellido</td>
-                            <td class="text-center">{{object.lastName}}</td>
-                        
-                        <tr>
-                            <td class="text-bold">Direccion</td>
-                            <td class="text-center">{{object.direc}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Localidad</td>
-                            <td class="text-center">{{object.loc}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Provincia</td>
-                            <td class="text-center">{{object.pcia}}</td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Doctor asignado</td>
-                            <td class="text-center">
-                                {% for d in object.doctors.all  %}
-                                    Dr. {{d}} / {% for s in d.specialty.all %}
-                                                {{s}}
-                                            {% endfor %}
-                                {% endfor %}
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Patologias</td>
-                            <td class="text-center">
-                                {% for p in object.patology.all  %}
-                                {{p.name}}
-                                {% endfor %}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-bold">Historial Medico</td>
-                            <td class="text-center">
-                                
-                                {% if object.history == None %}
-                                Sin historial medico
-                                {% else %}
-                                {{object.history}}
-                                {% endif %}
-                                
-                            </td>
-                        </tr>
 
-                    </tbody>
-                </table>
+                      <hr class="w-100">
+
+                      <p class="text-muted text-m text-bold">Doctor(s) a cargo</p>
+                      {% for d in object.doctors.all  %}
+                      <ul class="">
+                          <spand class="ml-0"> <i class="fas fa-user-md text-primary">
+
+                          </i> Dr. <span class="text-bold">{{d}}</span> / {% for s in d.specialty.all %}
+                                                                            <span class="text-bold">{{s}}</span>
+                                                                        {% endfor %}
+                          </spand> 
+                      </ul>
+                      {% endfor %}
+
+                      <hr class="w-100">
+
+                      <p class="text-muted text-m text-bold"> Historial medico:
+                        <p class="text-justify">
+                            {% if object.history == None %}
+                            Sin historial medico
+                            {% else %}
+                            {{object.history}}
+                            {% endif %}
+                        </p>
+                      </p>
+
+                    </div>
+                    
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="text-right">
+                  <a href="{% url 'UsersUpdateView' object.id %}" class="btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i> Editar Historia
+                  </a>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- patient -->
 
         </div>
     </div>
 </div>
+
+
+
 
 
 

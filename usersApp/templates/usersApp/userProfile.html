@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+
+<div class=" text-center text-bold h2 border-bottom-0 text-danger">
+    Actualizar Perfil 
+</div>
+
+
+    <div class="container container-form ">
+        <form method='POST d-flex justify-content-center '>
+        <!-- name and picture -->
+            <div class="row">
+                <div class="col-12">
+                    {{form|crispy}}
+                </div>
+            </div>
+        <!-- infromation -->
+        <input type="submit" class="btn btn-danger" value="Guardar"> 
+    </form>
+    </div>
+
+{% endblock %}

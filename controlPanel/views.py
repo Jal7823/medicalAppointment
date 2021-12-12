@@ -10,7 +10,7 @@ from django.core.paginator import Paginator
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from doctors.models import Doctor,Specialty
-from .forms import CreateMedicForms
+from .forms import CreateMedicForms,UpdatePatient
 
 # Create your views here.
 
@@ -19,16 +19,20 @@ def controlPanelBase(request):
         Q(sick=False)&
         Q(isDoctor = False)
     )
+
     sick = Usuario.objects.filter(
     Q(sick=True)&
     Q(isDoctor = False)
     )
+
     patients = Usuario.objects.filter(
         Q(sick=True) &
         Q(isDoctor = False)
     )
+
     patientsCount = Usuario.objects.filter(
     Q(isDoctor = False)
+    
     ).count()
 
 
@@ -50,15 +54,20 @@ def controlPanel(request):
     if request.user.isDoctor or request.user.user_administrator:
 
         # for counts
-        countUser= Usuario.objects.all().count()
+        countUser= Usuario.objects.filter(
+            Q(user_administrator=False)
+        ).count()
+
         sickUser = Usuario.objects.filter(
             Q(sick=True) &
-            Q(isDoctor = False)
+            Q(isDoctor = False)&
+            Q(user_administrator=False)
         ).count() 
 
         cured = Usuario.objects.filter(
             Q(sick=False) &
-            Q(isDoctor = False)
+            Q(isDoctor = False)&
+            Q(user_administrator=False)
         ).count() 
 
         # for appointment
@@ -141,7 +150,11 @@ class PatientsListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super(PatientsListView, self).get_context_data(**kwargs)
-        context['usersAppointment'] = Appointment.objects.all()
+        context['usersAppointment'] = Usuario.objects.filter(
+            Q(user_administrator=False)&
+            Q(isDoctor=False)
+
+        )
         return context
 
     
@@ -154,6 +167,11 @@ class PatientsListView(ListView):
 class PatientDetailView(DetailView):
     model = Usuario
     template_name = "controlPanel/patientsDetail.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super(PatientDetailView, self).get_context_data(**kwargs)
+        return context
+
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.isDoctor or request.user.user_administrator:
@@ -163,8 +181,8 @@ class PatientDetailView(DetailView):
 
 class UsersUpdateView(UpdateView):
     model = Usuario
-    fields = ['name','lastName','dni','doctors','patology','sick','history']
     template_name = "controlPanel/patientsUpdate.html"
+    form_class =UpdatePatient
     success_url=reverse_lazy('PatientsListView')
 
     def dispatch(self, request, *args, **kwargs):
@@ -193,6 +211,7 @@ class SicksListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SicksListView, self).get_context_data(**kwargs)
         sicks = Usuario.objects.filter(sick=True)
+
         context['sicks'] = sicks
         return context
 

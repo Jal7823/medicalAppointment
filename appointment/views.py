@@ -22,7 +22,7 @@ def appointment(request):
         form = formsAppointment(request.POST)
         if form.is_valid():
             form.save()
-        return redirect(to='appointment')
+        return redirect(to='appointmentList')
     else:
         form = formsAppointment()
 
