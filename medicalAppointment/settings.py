@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['medicalAppointment.pythonanywhere.com']
 
 
-#User
+# User
 AUTH_USER_MODEL = 'usersApp.Usuario'
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
@@ -47,19 +47,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #internal
+    # internal
     'doctors',
     'usersApp',
     'branchOffices',
     'appointment',
     'pruebas',
     'controlPanel',
-    #external
+    # external
     'crispy_forms',
     "crispy_bootstrap5",
     'ckeditor',
     'tempus_dominus',
     'django_userforeignkey',
+    'import_export',
+    'import_export',
+
 ]
 
 MIDDLEWARE = [
@@ -76,8 +79,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'medicalAppointment.urls'
 
-TEMPUS_DOMINUS_LOCALIZE=True
-TEMPUS_DOMINUS_INCLUDE_ASSETS=True
+TEMPUS_DOMINUS_LOCALIZE = True
+TEMPUS_DOMINUS_INCLUDE_ASSETS = True
 
 TEMPLATES = [
     {
@@ -111,7 +114,7 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'medicalAppointme$medicalService',
         'USER': 'medicalAppointme',
         'PASSWORD': '23051988joswelj',
@@ -120,8 +123,6 @@ DATABASES = {
         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
     }
 }
-
-
 
 
 # Password validation
@@ -167,7 +168,7 @@ STATICFILES_DIRS = [
 ]
 
 
-MEDIA_URL= '/media/'
+MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
