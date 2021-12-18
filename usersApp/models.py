@@ -4,6 +4,10 @@ from doctors.models import Doctor,Patology
 from django.db import models
 
 
+
+
+
+
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, username, name, password=None):
         if not email:
