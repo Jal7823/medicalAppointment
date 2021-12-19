@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'tempus_dominus',
     'django_userforeignkey',
     'import_export',
-    'import_export',
 
 ]
 
