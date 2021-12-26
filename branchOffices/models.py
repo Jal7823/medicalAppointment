@@ -1,8 +1,6 @@
 from django.db import models
-from doctors.models import Doctor,Specialty
+from doctors.models import Doctor, Specialty
 from ckeditor.fields import RichTextField
-
-
 
 
 class BranchOffices(models.Model):
@@ -11,7 +9,8 @@ class BranchOffices(models.Model):
     phone = models.IntegerField('Telefono')
     doctors = models.ManyToManyField(Doctor)
     specialty = models.ManyToManyField(Specialty)
-    image = models.ImageField('Imagen', upload_to='branchOffices/', null=True,blank=True)
+    image = models.ImageField(
+        'Imagen', upload_to='branchOffices/', null=True, blank=True)
     description = models.TextField()
 
     def __str__(self):
