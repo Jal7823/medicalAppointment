@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import os.path
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -111,17 +112,20 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'medicalAppointme$medicalService',
-        'USER': 'medicalAppointme',
-        'PASSWORD': '23051988joswelj',
-        'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'medicalAppointme$medicalService',
+#         'USER': 'medicalAppointme',
+#         'PASSWORD': '23051988joswelj',
+#         'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
+#         'PORT': '3306',
+#         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
+#     }
+# }
+
+
+DATABASES = db.SQLITE
 
 
 # Password validation
