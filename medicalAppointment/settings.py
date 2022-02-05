@@ -125,7 +125,7 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # }
 
 
-DATABASES = db.SQLITE
+DATABASES = db.MYSQL
 
 
 # Password validation
