@@ -16,16 +16,6 @@ SQLITE = {
 
 #mysql
 
-MYSQL = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'medicalAppointme$medicalService',
-        'USER': 'medicalAppointme',
-        'PASSWORD': '23051988joswelj',
-        'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
-    }
-}
+
 
     
