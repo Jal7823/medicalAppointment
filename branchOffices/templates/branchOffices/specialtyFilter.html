@@ -12,8 +12,47 @@
 <link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
 
 
+<div class="container  contenedor">
+    <!-- firts row -->
+    {% for b in branchOffices %}
+    <hr>
+    <div class="row pt-4 border-danger d-flex justify-content-center align-items-center mt-4 mb-4">
+        <div class="col-6">
+            <div class="jumbotron">
+                <h1 class="display-4 text-center text-colored">{{b.name}}</h1>
+            </div>            
+            <ul class="ul-descriptions">
+                <li><strong>Direccion:</strong> {{b.address}}</li>
+                <li><strong>Telefono:</strong> {{b.phone}}</li>
+                <h5>Especialidades</h5>
+
+                
+                {% for s in b.doctors.all %}
+                <li class="info-medic"><i class="fas fa-user-md"></i> 
+                    Dr.{{s.name}} {{s.lastName}} / 
+                    {% for m in s.specialty.all %}
+                    <span class="specialty-medic">{{m.name}}</span>
+                    {% endfor %}
+                </li>
+                    {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-6">
+            <img class="rounded img-top img-bo" src="{{b.image.url}}" alt="">
+        </div>
+        <div class="">
+            <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
+        </div>
+    </div>
+    <!-- firts row -->
+    {% endfor %}
+</div>
+
+
+
 <div class="card-group mb-4">
-    {% for h in branchOffices %}
+    {% for h in branchOffice %}
   
     <div class="card m-2">
       <img src="{{h.image.url}}" class="img-top rounded">
@@ -23,12 +62,12 @@
         </a>
   
         <p class="card-text">{{h.descriptions}}</p>
-        <p class="card-text"><strong>Direccion:</strong> {{b.address}}</p>
-        <p class="card-text"><strong>Telefono:</strong> {{b.phone}}</p>
+        <p class="card-text"><strong>Direccion:</strong> {{h.address}}</p>
+        <p class="card-text"><strong>Telefono:</strong> {{h.phone}}</p>
 
         <ul class="ul-descriptions">
 
-            {% for s in b.doctors.all %}
+            {% for s in h.doctors.all %}
             <li class="info-medic"><i class="fas fa-user-md"></i> 
                 Dr.{{s.name}} {{s.lastName}} / 
                 {% for m in s.specialty.all %}
@@ -48,7 +87,8 @@
   
     {% endfor %}
   </div>
-  
+
+
 
 
 {% endblock %}
