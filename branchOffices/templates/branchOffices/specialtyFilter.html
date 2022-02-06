@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
 
-<div class="card-group mb-4">
+<div class="card-group mb-4 mt-4">
     {% for h in branchOffices %}
   
     <div class="card m-2">
@@ -42,7 +42,7 @@
 
         <!-- <p class="card-text"><small class="text-muted"></small></p> -->
         <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
-        <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
+        <a href="{% url 'appointment' %}" class="btn btn-danger mx-auto button-appointment">Pedir Cita</a>
 
   
       </div>
