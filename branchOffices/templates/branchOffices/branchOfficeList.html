@@ -16,7 +16,7 @@
 
 
 <div class="card-group">
-    {% for h in branchOffices %}
+    {% for h in branchOffice %}
   
     <div class="card m-2">
       <img src="{{h.image.url}}" class="img-top rounded">
@@ -43,6 +43,8 @@
 
         <!-- <p class="card-text"><small class="text-muted"></small></p> -->
         <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
+        <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
+
   
       </div>
     </div>
@@ -50,6 +52,8 @@
     {% endfor %}
   </div>
   
+
+
   
   
 
