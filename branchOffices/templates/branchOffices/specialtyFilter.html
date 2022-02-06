@@ -62,12 +62,12 @@
         </a>
   
         <p class="card-text">{{h.descriptions}}</p>
-        <p class="card-text"><strong>Direccion:</strong> {{h.address}}</p>
-        <p class="card-text"><strong>Telefono:</strong> {{h.phone}}</p>
+        <p class="card-text"><strong>Direccion:</strong> {{b.address}}</p>
+        <p class="card-text"><strong>Telefono:</strong> {{b.phone}}</p>
 
         <ul class="ul-descriptions">
 
-            {% for s in h.doctors.all %}
+            {% for s in b.doctors.all %}
             <li class="info-medic"><i class="fas fa-user-md"></i> 
                 Dr.{{s.name}} {{s.lastName}} / 
                 {% for m in s.specialty.all %}
@@ -87,6 +87,8 @@
   
     {% endfor %}
   </div>
+  
+
 
 
 
