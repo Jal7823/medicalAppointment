@@ -123,7 +123,8 @@
             <div class="card m-2">
               <a href="{% url 'detail' h.id %}"><img src="{{h.image.url}}" class="img-top  rounded" alt="..."></a>
                 <div class="card-body">
-                  <a href="{% url 'detail' b.id %}"><h5 class="card-title">{{h.name}}</h5></a>
+                  <a href="{% url 'detail' h.id %}"><h5 class="card-title">{{h.name}}</h5></a>
+                  
                     <p class="card-text">{{h.descriptions}}</p>
                     <!-- <p class="card-text"><small class="text-muted"></small></p> -->
                     <div class="card-description text-justify p-4 bofic-descriptions">{{b.description}}</div>
