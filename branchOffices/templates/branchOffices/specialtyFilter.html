@@ -77,6 +77,23 @@
                 {% endfor %}
         </ul>
 
+        <ul class="ul-descriptions">
+            <li><strong>Direccion:</strong> {{b.address}}</li>
+            <li><strong>Telefono:</strong> {{b.phone}}</li>
+            <h5>Especialidades</h5>
+
+            
+            {% for s in b.doctors.all %}
+            <li class="info-medic"><i class="fas fa-user-md"></i> 
+                Dr.{{s.name}} {{s.lastName}} / 
+                {% for m in s.specialty.all %}
+                <span class="specialty-medic">{{m.name}}</span>
+                {% endfor %}
+            </li>
+                {% endfor %}
+        </ul>
+
+
         <!-- <p class="card-text"><small class="text-muted"></small></p> -->
         <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
         <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
