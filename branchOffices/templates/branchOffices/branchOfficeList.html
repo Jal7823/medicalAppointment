@@ -12,46 +12,46 @@
 <link rel="stylesheet" href="{% static 'css/branchOfficeList.css' %}">
 
 
-<div class="container contenedor">
-    <!-- firts row -->
-    {% for b in branchOffice %}
-    <hr>
-    <div class="container">
-        <div class="row pt-4 border-danger d-flex justify-content-center align-items-center mt-4 mb-4">
-            <div class="col-6">
-                <div class="jumbotron">
-                    <h1 class="display-4 text-center text-colored">{{b.name}}</h1>
-                </div>            
-                <ul class="ul-descriptions">
-                    <li><strong>Direccion:</strong> {{b.address}}</li>
-                    <li><strong>Telefono:</strong> {{b.phone}}</li>
-                    <h5>Especialidades</h5>
-    
-                    
-                    {% for s in b.doctors.all %}
-                    <li class="info-medic"><i class="fas fa-user-md"></i> 
-                        Dr.{{s.name}} {{s.lastName}} / 
-                        {% for m in s.specialty.all %}
-                        <span class="specialty-medic">{{m.name}}</span>
-                        {% endfor %}
-                    </li>
-                        {% endfor %}
-                </ul>
-                <img class="rounded img-top img-bo" src="{{b.image.url}}" alt="">
-            </div>
-    
-            <div class="col-6 card">
-            </div>
-            <div class="">
-                <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
-            </div>
-        </div>
-    
-    </div>
-    <!-- firts row -->
-    {% endfor %}
-</div>
 
+
+
+<div class="card-group">
+    {% for h in branchOffices %}
+  
+    <div class="card m-2">
+      <img src="{{h.image.url}}" class="img-top rounded">
+      <div class="card-body">
+        <a href="{% url 'detail' h.id %}">
+          <h5 class="card-title">{{h.name}}</h5>
+        </a>
+  
+        <p class="card-text">{{h.descriptions}}</p>
+        <p class="card-text"><strong>Direccion:</strong> {{b.address}}</p>
+        <p class="card-text"><strong>Telefono:</strong> {{b.phone}}</p>
+
+        <ul class="ul-descriptions">
+
+            {% for s in b.doctors.all %}
+            <li class="info-medic"><i class="fas fa-user-md"></i> 
+                Dr.{{s.name}} {{s.lastName}} / 
+                {% for m in s.specialty.all %}
+                <span class="specialty-medic">{{m.name}}</span>
+                {% endfor %}
+            </li>
+                {% endfor %}
+        </ul>
+
+        <!-- <p class="card-text"><small class="text-muted"></small></p> -->
+        <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
+  
+      </div>
+    </div>
+  
+    {% endfor %}
+  </div>
+  
+  
+  
 
       
 {% endblock %}
