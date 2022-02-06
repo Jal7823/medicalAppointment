@@ -32,6 +32,7 @@ def detailSpecialty(request, id):
         'branchOffices': branchOffices,
     }
 
+
     return render(request, 'branchOffices/specialtyFilter.html', context)
 
 
