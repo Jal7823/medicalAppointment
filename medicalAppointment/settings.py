@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0k-)io5ggcv0%-^up8r$#+yr(z4q1z^$69hna%s-zo9)c5_)r9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['medicalAppointment.pythonanywhere.com']
 
