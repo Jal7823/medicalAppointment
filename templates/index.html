@@ -115,31 +115,18 @@
 
 <!-- office -->
 
-<!-- <div class="container">
-  <div class="row">
-    {% for b in  branchOffices %}
-    <div class="col-md-6 ml-4">
-        <a href="{% url 'detail' b.id %}"><img src="{{b.image.url}}" class="img-size" ></a>
-        <div class="card d-flex m-auto bofic-card">
-          <a href="{% url 'detail' b.id %}"><div class="card-title h4 text-center text-danger p-4">{{b.name}}</div></a>
-          <div class="card-description text-justify p-4 bofic-descriptions">{{b.description}}</div>
-        </div>
-      </div>
-      {% endfor %}
-  </div>
-</div>
- -->
+
 
 <div class="card-group">
         {% for h in branchOffices %}
           
             <div class="card m-2">
-                <img src="{{h.image.url}}" class="img-top  rounded" alt="...">
+              <a href="{% url 'detail' h.id %}"><img src="{{h.image.url}}" class="img-top  rounded" alt="..."></a>
                 <div class="card-body">
-                    <h5 class="card-title">{{h.name}}</h5>
+                  <a href="{% url 'detail' b.id %}"><h5 class="card-title">{{h.name}}</h5></a>
                     <p class="card-text">{{h.descriptions}}</p>
                     <!-- <p class="card-text"><small class="text-muted"></small></p> -->
-                    <a href="{% url 'detail' h.id %}" class="btn button-menu">La quiero</a>
+                    <div class="card-description text-justify p-4 bofic-descriptions">{{b.description}}</div>
 
                 </div>
             </div>
