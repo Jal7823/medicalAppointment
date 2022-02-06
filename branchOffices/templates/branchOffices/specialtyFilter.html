@@ -78,12 +78,9 @@
         </ul>
 
         <ul class="ul-descriptions">
-            <li><strong>Direccion:</strong> {{b.address}}</li>
-            <li><strong>Telefono:</strong> {{b.phone}}</li>
             <h5>Especialidades</h5>
-
             
-            {% for s in b.doctors.all %}
+            {% for s in h.doctors.all %}
             <li class="info-medic"><i class="fas fa-user-md"></i> 
                 Dr.{{s.name}} {{s.lastName}} / 
                 {% for m in s.specialty.all %}
