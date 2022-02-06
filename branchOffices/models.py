@@ -9,7 +9,7 @@ class BranchOffices(models.Model):
     phone = models.IntegerField('Telefono')
     doctors = models.ManyToManyField(Doctor)
     specialty = models.ManyToManyField(Specialty)
-    image = models.ImageField('Imagen', upload_to='branchOffices', null=True, blank=True)
+    image = models.ImageField('Imagen', upload_to='/branchOffices', null=True, blank=True)
     
     description = models.TextField()
 
