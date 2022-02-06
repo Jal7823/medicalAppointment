@@ -109,19 +109,15 @@
       </div>
 </div>
 
-
-
 <hr>
 
 <!-- office -->
-
-
 
 <div class="card-group">
         {% for h in branchOffices %}
           
             <div class="card m-2">
-              <img src="{{h.image.url}}" class="img-top  rounded" >
+              <img src="{{h.image.url}}" class="img-top rounded" >
                 <div class="card-body">
                   <a href="{% url 'detail' h.id %}"><h5 class="card-title">{{h.name}}</h5></a>
 
