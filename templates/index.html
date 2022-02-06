@@ -115,7 +115,7 @@
 
 <!-- office -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     {% for b in  branchOffices %}
     <div class="col-md-6 ml-4">
@@ -128,6 +128,23 @@
       {% endfor %}
   </div>
 </div>
+ -->
+
+<div class="card-group">
+        {% for h in branchOffices %}
+          
+            <div class="card m-2">
+                <img src="{{h.image.url}}" class="img-top img-size rounded" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{h.name}}</h5>
+                    <p class="card-text">{{h.descriptions}}</p>
+                    <!-- <p class="card-text"><small class="text-muted"></small></p> -->
+                    <a href="{% url 'ProductDetail' h.id %}" class="btn button-menu">La quiero</a>
+                </div>
+            </div>
+        
+        {% endfor %}
+      </div>
 
 
 
