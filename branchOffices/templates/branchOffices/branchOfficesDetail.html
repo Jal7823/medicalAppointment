@@ -48,11 +48,11 @@
     <div class="container">
         <div class="row d-flex ">
             {% for s in object.doctors.all %}
-            <div class="col-md-6 d-flex justify-content-center">
+            <div class="col-md d-flex justify-content-center">
                 <div class="card mb-3 ml-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="{{s.image.url}}" class="img-fluid rounded-start">
+                    <div class="row  p-2">
+                      <div class="col-md-4 d-flex justify-content-center">
+                        <img src="{{s.image.url}}" class="img-fluid  img-doctors">
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">

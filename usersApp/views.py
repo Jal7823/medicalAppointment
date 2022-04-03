@@ -1,5 +1,7 @@
 import random
 import datetime
+from django.http import HttpResponseRedirect
+from django.db.models import Q
 from datetime import timedelta
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect, render
@@ -70,29 +72,26 @@ class UserProfile(UpdateView):
     template_name = 'usersApp/userProfile.html'
     success_url = reverse_lazy('index')
 
-
 class DetailUserProfile(DeleteView):
     model = Usuario
     template_name = 'usersApp/userDetailProfile.html'
 
-
 def createNumberMembership(request, id):
+    user = Usuario.objects.get(Q(id=id))
     numberCard = random.randint(0, 9999_9999_9999_9999)
     traspast = str(numberCard)
-    separator = '{} {} {} {}'.format(
-        traspast[:4], traspast[4:8], traspast[8:12], traspast[12:])
-    user = Usuario.objects.filter(id=id)
-    if user.nrMembership == '':
-        message = 'Suscripcion creada con exito'
 
-        user.update(nrMembership=numberCard)
-    else:
-        message = 'ya usted posee tarjeta de suscripcion'
-        return message
+    print(user.nrMembership)
+
+    user.nrMembership=traspast
+    print('==>',user.nrMembership)
+    user.save()
+
+
+
 
     context = {
-        'message': message,
-        'separator': separator,
+        'separator': traspast,
     }
 
-    return render(request, 'usersApp/userDetailProfile.html', context)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', f"DetailUserProfile/{id}"))

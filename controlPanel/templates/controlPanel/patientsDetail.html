@@ -52,7 +52,11 @@
                               
                               {% for p in object.patology.all  %}
                                 {% if p %}
-                                  <span class="text-danger">{{p.name}}</span>
+                                  <span class="text-danger">
+                                    <ul>
+                                      <li>{{p.name}}</li>
+                                    </ul>
+                                  </span>
                                 {% else %}
                                   <span class="text-danger">sin patologia</span>
                                 {% endif %}
@@ -64,7 +68,7 @@
                         </ul>
   
                       </h2>
-                      <img src="{{object.image.url}}" alt="user-avatar" class="img-patient img-fluid img-patient">
+                      <img src="{{object.image.url}}" alt="user-avatar" class="img-patient img-fluid rounded-circle img-patient">
   
                     </div>
   

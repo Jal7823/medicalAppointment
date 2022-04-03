@@ -18,7 +18,7 @@ class CreateMedicForms(forms.ModelForm):
 class CreatePatient(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields =['username','email','password','lastName','dni','direc','loc','pcia','tlf','sick','doctors','patology']
+        fields =['username','email','password','lastName','image','dni','direc','loc','pcia','tlf','sick','doctors','patology']
         widgets = {
             'sick':forms.CheckboxInput(),
             'pcia':forms.Select(attrs={'class':'form-control'}),

@@ -37,9 +37,35 @@
               <tr class="text-center">
                   <td><a href="{% url 'PatientDetailView' a.id %}">{{a.name | upper}}</a></td>
                   <td>{{a.lastName | upper}}</td>
-                  <td>{{a.specialty.name}}</td>
-                  <td>{{a.date|date:"d/m/Y" }}</td>
-                  <td>{{a.branchOffices.name}}</td>
+                  <td>
+                    
+                    {% if a.specialty %}
+                      {{a.specialty.name}}
+                    {% else %}
+                      N/A
+                    {% endif %}
+                      
+                  </td>
+                  <td>
+                    
+                    {% if a.date %}
+                      {{a.date|date:"d/m/Y" }}
+                    {% else %}
+                    N/A
+                      
+                    {% endif %}
+                      
+                  </td>
+                  <td>
+                    
+                    {% if a.branchOffices %}
+                      {{a.branchOffices.name}}
+                    {% else %}
+                    N/A
+                      
+                    {% endif %}
+                      
+                  </td>
                   <td><a href="{% url 'PatientDetailView' a.id %}"><img class="img-patient rounded" src="{{a.image.url}}" alt=""></a></td>
                   <td>
                     <a href="{% url 'PatientDetailView' a.id %}"><i class="fa fa-eye text-white bg-success p-2 rounded"></i></a>
@@ -53,7 +79,6 @@
       </table>
     
 </div>
-
 
 
       
