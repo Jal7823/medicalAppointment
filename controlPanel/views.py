@@ -7,10 +7,11 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, DetailView, ListView, UpdateView,CreateView
 from django.core.paginator import Paginator
+#internals
 from appointment.models import Appointment
 from usersApp.models import Usuario
 from doctors.models import Doctor,Specialty
-from .forms import CreateMedicForms,UpdatePatient
+from .forms import CreateMedicForms,UpdatePatient,CreatePatient
 
 # Create your views here.
 
@@ -191,6 +192,11 @@ class UsersUpdateView(UpdateView):
         else:    
             return redirect(to='index')
 
+class CreatePatient(CreateView):
+    model = Usuario
+    form_class = CreatePatient
+    template_name = 'controlPanel/createPatient.html'
+    success_url = reverse_lazy('controlPanel')
 def projections(request):
 
     if request.user.isDoctor or request.user.user_administrator:

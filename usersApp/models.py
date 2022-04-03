@@ -3,11 +3,6 @@ from django.contrib.auth.models import AbstractUser, BaseUserManager,Permissions
 from doctors.models import Doctor,Patology
 from django.db import models
 
-
-
-
-
-
 class UsuarioManager(BaseUserManager):
     def create_user(self, email, username, name, password=None):
         if not email:
@@ -42,7 +37,7 @@ class Usuario(AbstractUser):
     email = models.EmailField('Correo electronico',unique=True, max_length=254)
     name = models.CharField('Nombre', max_length=200, blank=True, null=True)
     lastName = models.CharField('lastName', max_length=200, blank=True, null=True)
-    image = models.ImageField('image de perfil', upload_to='perfil/', null=True, blank=True,default='perfil/undefined.jpg')
+    image = models.ImageField('image de perfil/', upload_to='perfil/', null=True, blank=True,default='perfil/undefined.jpg')
     usuar_active = models.BooleanField(default=True)
     user_administrator = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
