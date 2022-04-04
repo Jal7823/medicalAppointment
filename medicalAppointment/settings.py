@@ -14,6 +14,10 @@ from pathlib import Path
 import os
 import os.path
 from django.urls import reverse_lazy
+from . import configuration
+from . import db
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,13 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0k-)io5ggcv0%-^up8r$#+yr(z4q1z^$69hna%s-zo9)c5_)r9'
+SECRET_KEY = configuration.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = configuration.LOCAL_DEBUG
 
-ALLOWED_HOSTS = ['medicalAppointment.pythonanywhere.com']
-# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = configuration.LOCAL_HOSTS
 
 
 # User
@@ -106,38 +109,10 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = db.DB_LOCAL
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'medicalAppointme$medicalService',
-#         'USER': 'medicalAppointme',
-#         'PASSWORD': '23051988joswelj',
-#         'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
-#         'PORT': '3306',
-#         'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
-#     }
-# }
 
-
-DATABASES  = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'medicalAppointme$medicalService',
-        'USER': 'medicalAppointme',
-        'PASSWORD': '23051988joswelj',
-        'HOST': 'medicalAppointment.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'STORAGE_ENGINE': 'MyISAM / INNODB / ETC'
-    }
-}
 
 
 # Password validation
