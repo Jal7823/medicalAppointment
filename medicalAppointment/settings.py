@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = configuration.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = configuration.WEB_DEBUG
+DEBUG = configuration.LOCAL_DEBUG
 
-ALLOWED_HOSTS = configuration.WEB_HOSTS
+ALLOWED_HOSTS = configuration.LOCAL_HOSTS
 
 
 # User

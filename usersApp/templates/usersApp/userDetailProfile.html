@@ -13,123 +13,56 @@
 </div>
 
 
-<div class="container info">
+<div class="container">
   <div class="row">
-    <div class="col-12">
-      <!-- patient -->
-      <div class="container">
-        <div class="card card-solid mt-4">
-          <div class="card-body pb-0">
-            <div class="row">
-              <div
-                class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
-                <div class="card w-100 bg-light d-flex flex-fill">
-                  <div class="card-body pt-0">
-                    <div class="row">
-                      <div class="col-12 mt-4">
-                        <div class="d-flex justify-content-between">
-                          <h2 class="lead">
-                            <b class="text-bold"
-                              >{{object.name|title}}
-                              {{object.lastName|title}}</b
-                            >
-                            <ul class="ml-4 mb-0 fa-ul text-muted">
-                              <li class="small mt-4">
-                                <span class="fa-li"
-                                  ><i class="fas fa-lg fa-id-card"></i
-                                ></span>
-                                D.N.I: {{object.dni}}
-                              </li>
-                              <li class="small mt-4">
-                                <span class="fa-li"
-                                  ><i class="fas fa-lg fa-building"></i
-                                ></span>
-                                Direccion: {{p.direc}}, {{object.loc}},
-                                {{object.pcia}}
-                              </li>
-                              <li class="small mt-4">
-                                <span class="fa-li"
-                                  ><i class="fas fa-lg fa-phone"></i
-                                ></span>
-                                Telefono #: + 54 - {{object.tlf}}
-                              </li>
-                            </ul>
-                          </h2>
-                          <img
-                            src="{{object.image.url}}"
-                            alt="user-avatar"
-                            class="img-patient rounded img-fluid rounded-circle shadow img-patient"
-                          />
+      <div class="col-12">
+          <!-- patient -->
+        <div class="container ">
+          <div class="card card-solid mt-4">
+            <div class="card-body pb-0">
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 d-flex align-items-stretch flex-column">
+                  <div class="card w-100 bg-light d-flex flex-fill">
+                    <div class="card-header text-bold h3 border-bottom-0 text-danger">
+                      Mi perfil 
+                    </div>
+                    <div class="card-body pt-0">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="d-flex justify-content-between mt-4">
+                            <h2 class="lead"><b class="text-bold">{{object.name|title}} {{object.lastName|title}}</b>
+                              <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-id-card"></i></span> D.N.I: {{object.dni}}</li>
+                                <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Direccion: {{p.direc}}, {{object.loc}}, {{object.pcia}}</li>
+                                <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Telefono #: + 54 - {{object.tlf}}</li>          
+                                <li class="small mt-2"><span class="fa-li"><i class="fas fa-lg fa-credit-card "></i></span> {{object.nrMembership}}</li>          
+                              </ul>
+
+                            </h2>
+                            <img src="{{object.image.url}}" alt="user-avatar" class="img-patient img-fluid rounded-circle img-patient">
+                          </div>
+                        <hr class="w-100">
+                        <!-- card membership -->
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                              <a href="{% url 'userProfile' object.id %}" class="btn btn-danger" >Editar perfil</a>
+                            </div>
                         </div>
-                        <hr class="w-100" />
+                      </div>
+  
                       </div>
                     </div>
-                    
-                    <a
-                    href="{% url 'userProfile' object.id %}"
-                    class="btn btn-sm btn-primary ">
-                    <i class="fas fa-edit"></i>
-                    Editar mi perfil
-                  </a>
-
-                  </div>  
-
-                  <div class="card-footer">
-                    <div class="d-flex justify-content-between">
-                      {% if user.nrMembership == None %}
-
-                      <a
-                        href="{% url 'createNumberMembership' object.id %}?next={{ request.path|urlencode }}"
-                        class="btn btn-sm btn-success">
-                        <i class="fas fa-edit"></i>
-                        Obtener membresia
-                      </a>
-                    </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
           </div>
+
         </div>
+<!-- patient -->
 
-        <div class="alert alert-info mt-4 text-center display-5" role="alert">
-          No tiene tarjeta de afiliacion
-        </div>
-        {% else %}
-
-
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md">
-              <div class="membership d-flex justify-content-center">
-                <div class="row w-50 cardMember">
-                  <div class="col-8 data p-4">
-                    <span class="items name"
-                      >{{object.name| title}} {{object.lastName| title}}</span
-                    >
-                    <span class="items lastName">{{object.nrMembership}}</span>
-                    <span class="items phone">Telf:{{object.tlf}}</span>
-                  </div>
-    
-                  <div class="col-4 logo2 bg-danger d-flex align-items-center">
-                    <div class="display-1 mx-auto">
-                      <i class="fas fa-certificate text-warning "></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-          </div>
-        </div>
-
-        
       </div>
-
-      {% endif %}
-    </div>
-    <!-- patient -->
   </div>
 </div>
 
