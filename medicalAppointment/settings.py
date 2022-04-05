@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = configuration.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = configuration.LOCAL_DEBUG
+DEBUG = configuration.WEB_DEBUG
 
-ALLOWED_HOSTS = configuration.LOCAL_HOSTS
+ALLOWED_HOSTS = configuration.WEB_HOSTS
 
 
 # User
@@ -109,7 +109,7 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = db.DB_LOCAL
+DATABASES = db.DB_WEB
 
 
 
