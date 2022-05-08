@@ -36,7 +36,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('WEB_DEBUG')
-ALLOWED_HOSTS = env('WEB_HOSTS')
+ALLOWED_HOSTS = ['medicalappointmenta.herokuapp.com']
 
 
 # User
