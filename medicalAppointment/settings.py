@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import os.path
+
 from django.urls import reverse_lazy
 from . import configuration
 from . import db
@@ -20,26 +21,27 @@ from . import db
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
+# environ
+import environ
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = configuration.SECRET_KEY
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = configuration.WEB_DEBUG
-
-ALLOWED_HOSTS = configuration.WEB_HOSTS
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('LOCAL_DEBUG')
+ALLOWED_HOSTS = env('LOCAL_HOSTS')
 
 
 # User
 AUTH_USER_MODEL = 'usersApp.Usuario'
-
 LOGIN_REDIRECT_URL = reverse_lazy('index')
-
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 # Application definition
@@ -109,7 +111,7 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = db.DB_WEB
+DATABASES = db.DB_LOCAL
 
 
 
@@ -151,12 +153,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+# STATIC_URL = '/static/'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
+############################
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TEMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+os.makedirs(STATIC_TEMP,exist_ok=True)
+os.makedirs(STATIC_ROOT,exist_ok=True)
 
+STATICFILES_DIR = (
+    os.path.join(STATIC_ROOT, 'static')
+)
+#########################
 
 MEDIA_URL = '/media/'
 
@@ -171,3 +184,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
