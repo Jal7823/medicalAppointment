@@ -2,60 +2,52 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{title}}{% endblock %}
-
-
-
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/branchOfficeList.css' %}">
+    <link rel="stylesheet" href="{% static 'css/branchOfficeList.css' %}">
 
+    <div class="card-group mb-4">
+        {% for h in branchOffice %}
 
+            <div class="card m-2">
+                <img style="object-fit:cover; width:450px ;height:400px;" src="{{ h.image.url }}" class="img-top rounded">
+                <div class="card-body">
+                    <a href="{% url 'detail' h.id %}">
+                        <h5 class="card-title">{{ h.name }}</h5>
+                    </a>
 
+                    <p class="card-text">{{ h.descriptions }}</p>
+                    <p class="card-text"><strong>Direccion:</strong> {{ b.address }}</p>
+                    <p class="card-text"><strong>Telefono:</strong> {{ b.phone }}</p>
 
+                    <ul class="ul-descriptions">
 
-<div class="card-group mb-4">
-    {% for h in branchOffice %}
-  
-    <div class="card m-2">
-      <img src="{{h.image.url}}" class="img-top rounded">
-      <div class="card-body">
-        <a href="{% url 'detail' h.id %}">
-          <h5 class="card-title">{{h.name}}</h5>
-        </a>
-  
-        <p class="card-text">{{h.descriptions}}</p>
-        <p class="card-text"><strong>Direccion:</strong> {{b.address}}</p>
-        <p class="card-text"><strong>Telefono:</strong> {{b.phone}}</p>
+                        {% for s in b.doctors.all %}
+                            <li class="info-medic"><i class="fas fa-user-md"></i>
+                                Dr.{{ s.name }} {{ s.lastName }} /
+                                {% for m in s.specialty.all %}
+                                    <span class="specialty-medic">{{ m.name }}</span>
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
 
-        <ul class="ul-descriptions">
+                    <!-- <p class="card-text"><small class="text-muted"></small></p> -->
+                    <div class="card-description text-justify p-4 bofic-descriptions">{{ h.description }}</div>
+                    <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
 
-            {% for s in b.doctors.all %}
-            <li class="info-medic"><i class="fas fa-user-md"></i> 
-                Dr.{{s.name}} {{s.lastName}} / 
-                {% for m in s.specialty.all %}
-                <span class="specialty-medic">{{m.name}}</span>
-                {% endfor %}
-            </li>
-                {% endfor %}
-        </ul>
+                </div>
+            </div>
 
-        <!-- <p class="card-text"><small class="text-muted"></small></p> -->
-        <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
-        <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
-
-  
-      </div>
+        {% endfor %}
     </div>
-  
-    {% endfor %}
-  </div>
-  
 
 
-  
-  
 
-      
+
+
+
+
 {% endblock %}

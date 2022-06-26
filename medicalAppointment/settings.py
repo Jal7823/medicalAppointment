@@ -36,7 +36,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('WEB_DEBUG')
-ALLOWED_HOSTS = env('WEB_HOSTS')
+LOCAL_HOSTS = env('WEB_HOSTS')
 
 
 # User
@@ -111,7 +111,7 @@ WSGI_APPLICATION = 'medicalAppointment.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = db.DB_LOCAL
+DATABASES = db.DB_WEB
 
 
 
@@ -152,23 +152,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+# ########### LOCALS #################
 
 # STATIC_URL = '/static/'
-
+#
 # STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
-############################
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#         BASE_DIR / "static",
+#     ]
+# ########### PRODUCTIONS #################
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_TEMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 os.makedirs(STATIC_TEMP,exist_ok=True)
 os.makedirs(STATIC_ROOT,exist_ok=True)
 
-STATICFILES_DIR = (
-    os.path.join(STATIC_ROOT, 'static')
-)
+# STATICFILES_DIR = (
+#     os.path.join(STATIC_ROOT, 'static')
+# )
 #########################
 
 MEDIA_URL = '/media/'

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 
@@ -9,71 +9,76 @@
 {% block content %}
 
 
-<link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
+    <link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
+    <link rel="stylesheet" href="{% static 'css/branchOfficesDetails.css' %}">
 
 
-<div class="container contenedor ">
-    <!-- firts row -->
-    <div class="row pt-4 border-danger d-flex justify-content-center align-items-center">
-        <div class="col-6">
-            <div class="jumbotron">
-                <h1 class="display-4 text-center text-colored">{{object.name}}</h1>
-            </div>            
-            <ul class="ul-descriptions">
-                <li><strong>Direccion:</strong> {{object.address}}</li>
-                <li><strong>Telefono:</strong> {{object.phone}}</li>
-            </ul>
-            <div class="">
-                <a href="{% url 'appointment' %}" class="btn btn-danger w-25 button-appointment">Pedir Cita</a>
+
+    <!-- sucursales -->
+    <div class="container">
+        <div class="card border-0 mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ object.image.url }}" class="img-fluid rounded-start imgBranchOf" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title h2 text-danger fw-bold">{{ object.name }}</h5>
+                        <p class="card-text text-justify">Direccion:{{ object.description }}</p>
+                        <p class="card-text">Telefono:{{ object.phone }}</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text"><small class="text-muted">{{ object.address }}</small></p>
+                            <a href="{% url 'appointment' %}" class="btn btn-danger button-appointment">Pedir Cita</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-            <div class="col-6">
-                <img class="rounded img-top img-bo" src="{{object.image.url}}" alt="">
-            </div>
     </div>
-    <!-- firts row -->
+    <!-- /sucursales -->
+
+    <div class="container contenedor">
+
+        <!-- secoond rows -->
+        <div class="divisor d-flex align-items-center">
+            <hr class="ml-4 text-danger">
+            <h6 class='text-center text-separator'>Doctores de Sucursal</h6>
+            <hr class="mr-4 text-danger">
+        </div>
+
+        <!-- /secoond rows -->
 
 
-    <!-- secoond rows -->
-    <div class="divisor d-flex align-items-center">
-        <hr class="ml-4 text-danger">
-        <h6 class='text-center text-separator'>Doctores de Sucursal</h6>
-        <hr class="mr-4 text-danger">
     </div>
-
-    <!-- /secoond rows -->
 
     <!-- doctors -->
+
     <div class="container">
-        <div class="row d-flex ">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for s in object.doctors.all %}
-            <div class="col-md d-flex justify-content-center">
-                <div class="card mb-3 ml-3" style="max-width: 540px;">
-                    <div class="row  p-2">
-                      <div class="col-md-4 d-flex justify-content-center">
-                        <img src="{{s.image.url}}" class="img-fluid  img-doctors">
-                      </div>
-                      <div class="col-md-8">
+                <div class="col">
+                    <div class="card h-100">
+                        <img style="width: 400px;height: 300px;object-fit: cover;" src="{{ s.image.url }}"
+                             class="card-img-top" alt="...">
                         <div class="card-body">
-                          <h5 class="card-title">Dr.{{s.name}} {{s.lastName}}</h5>
-                          {% for m in s.specialty.all %}
-                          <p class="card-text">Especialidad: <span class="text-danger">{{m.name}}</span></p>
-                          <p class="card-text"><small class="text-muted">Nro. de Medico: {{s.medicalNumber}}</small></p>
-                          {% endfor %}
+                            <h5 class="card-title">Dr./Dra. {{ s.name }} {{ s.lastName }}</h5>
                         </div>
-                      </div>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                <p class="card-text fw-bold">
+                                    {% for m in s.specialty.all %}
+                                        <span class="text-danger fw-bold"> Especialidad:</span> {{ m.name }}
+                                    {% endfor %}
+                                </p>
+                            </small>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                {% endfor %} 
+            {% endfor %}
         </div>
-    </div>      
-    
+    </div>
+<!-- /doctors -->
 
-    <!-- /doctors -->
-
-</div>
 
 
 

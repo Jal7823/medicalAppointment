@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 
 
@@ -9,48 +9,45 @@
 {% block content %}
 
 
-<link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
+    <link rel="stylesheet" href="{% static 'css/branchOffices.css' %}">
 
-<div class="card-group mb-4 mt-4">
-    {% for h in branchOffices %}
-  
-    <div class="card m-2">
-      <img src="{{h.image.url}}" class="img-top rounded">
-      <div class="card-body">
-        <a href="{% url 'detail' h.id %}">
-          <h5 class="card-title">{{h.name}}</h5>
-        </a>
-  
-        <p class="card-text">{{h.descriptions}}</p>
-        <p class="card-text"><strong>Direccion:</strong> {{h.address}}</p>
-        <p class="card-text"><strong>Telefono:</strong> {{h.phone}}</p>
+    <div class="card-group mb-4 mt-4">
+        {% for h in branchOffices %}
 
+            <div class="card m-2">
+                <img style="width: 100vh;height: 600px;object-fit: cover;" src="{{ h.image.url }}" class="img-top rounded">
+                <div class="card-body">
+                    <a href="{% url 'detail' h.id %}">
+                        <h5 class="card-title">{{ h.name }}</h5>
+                    </a>
 
-        <h5>Especialidades</h5>
-        <ul class="ul-descriptions">
-            
-            {% for s in h.doctors.all %}
-            <li class="info-medic"><i class="fas fa-user-md"></i> 
-                Dr.{{s.name}} {{s.lastName}} / 
-                {% for m in s.specialty.all %}
-                <span class="specialty-medic">{{m.name}}</span>
-                {% endfor %}
-            </li>
-                {% endfor %}
-        </ul>
+                    <p class="card-text">{{ h.descriptions }}</p>
+                    <p class="card-text"><strong>Direccion:</strong> {{ h.address }}</p>
+                    <p class="card-text"><strong>Telefono:</strong> {{ h.phone }}</p>
 
+                    <h5>Especialidades</h5>
+                    <ul class="ul-descriptions">
 
-        <!-- <p class="card-text"><small class="text-muted"></small></p> -->
-        <div class="card-description text-justify p-4 bofic-descriptions">{{h.description}}</div>
-        <a href="{% url 'appointment' %}" class="btn btn-danger mx-auto button-appointment">Pedir Cita</a>
+                        {% for s in h.doctors.all %}
+                            <li class="info-medic"><i class="fas fa-user-md"></i>
+                                Dr.{{ s.name }} {{ s.lastName }} /
+                                {% for m in s.specialty.all %}
+                                    <span class="specialty-medic">{{ m.name }}</span>
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>
 
-  
-      </div>
+                    <!-- <p class="card-text"><small class="text-muted"></small></p> -->
+                    <div class="card-description text-justify p-4 bofic-descriptions">{{ h.description }}</div>
+                    <a href="{% url 'appointment' %}" class="btn btn-danger mx-auto button-appointment">Pedir Cita</a>
+
+                </div>
+            </div>
+
+        {% endfor %}
     </div>
-  
-    {% endfor %}
-  </div>
-  
+
 
 
 
