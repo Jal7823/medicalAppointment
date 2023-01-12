@@ -1,8 +1,6 @@
 import random
-import datetime
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from datetime import timedelta
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -28,23 +26,22 @@ class LoginFromView(LoginView):
         return context
 
 
-def registro(request):
+def register(request):
     data = {
         'form': CustomUserCreationForm()
-
     }
 
     if request.method == 'POST':
-        formulario = CustomUserCreationForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save()
+        form = CustomUserCreationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
 
             user = authenticate(
-                username=formulario.cleaned_data['username'], password=formulario.cleaned_data['password1'])
+                username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             login(request, user)
             return redirect(to='login')
 
-        data['form'] = formulario
+        data['form'] = form
         messages.error(request, 'algo fallo en la suscripcion')
     return render(request, 'usersApp/registration.html', data)
 
@@ -53,7 +50,7 @@ class LogoutView(LogoutView):
     pass
 
 
-def formulario(request):
+def register_form(request):
 
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
@@ -81,15 +78,8 @@ def createNumberMembership(request, id):
     numberCard = random.randint(0, 9999_9999_9999_9999)
     traspast = str(numberCard)
 
-    print(user.nrMembership)
-
     user.nrMembership=traspast
-    print('==>',user.nrMembership)
     user.save()
-
-
-
-
     context = {
         'separator': traspast,
     }

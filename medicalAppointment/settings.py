@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'usersApp',
     'branchOffices',
     'appointment',
-    'pruebas',
     'controlPanel',
     # external
     'crispy_forms',

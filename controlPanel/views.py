@@ -25,20 +25,15 @@ def controlPanelBase(request):
     Q(sick=True)&
     Q(isDoctor = False)
     )
-
     patients = Usuario.objects.filter(
         Q(sick=True) &
         Q(isDoctor = False)
     )
-
     patientsCount = Usuario.objects.filter(
     Q(isDoctor = False)
-    
     ).count()
 
-
     specialty = Specialty.objects.all()
-
 
     context = {
         'cured':cured,

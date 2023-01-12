@@ -9,14 +9,23 @@ from .models import BranchOffices
 
 
 class BranchOfficesDetail(DetailView):
+    """Should be get detail of BranchOffices
+
+    Return:
+        DetailView (dic): It have all information of BranchOffices, it's class for any field of data base of this models, you can access to any field of this model through to dot methodology.
+            Example:
+                object.name
+                object.address
+    """    
     model = BranchOffices
     template_name = 'branchOffices/branchOfficesDetail.html'
     
-    
-    
-
 class BranchOfficeList(ListView):
-    # permission_required = ''
+    """Should be get list of BranchOffices
+
+    Returns:
+        branchOffice: list of BranchOffices
+    """    
     model = BranchOffices
     template_name = 'branchOffices/branchOfficeList.html'
 
