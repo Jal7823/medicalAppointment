@@ -26,7 +26,6 @@ urlpatterns = [
     path('doctors/', include('doctors.urls')),
     path('branchOffices/', include('branchOffices.urls')),
     path('appointment/', include('appointment.urls')),
-    path('pruebas/', include('pruebas.urls')),
     path('users/', include('usersApp.urls')),
     path('controlPanel/', include('controlPanel.urls')),
     path('',index,name='index')
