@@ -42,7 +42,7 @@ All packages will be installed running the next command line
 pip3 install -r requirements.txt
 ```
 
-### :gear: Configure Data Base
+### :gear: Configuration of Data Base
 
 
  In the folder *settings.py* you can find a *DATABASES* variable you can switch the value for *db.DB_LOCAL* for working with sqlite3 or *db.DB_WEB* for production
