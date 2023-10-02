@@ -6,6 +6,10 @@ from usersApp.models import Usuario
 
 
 class formsAppointment(forms.ModelForm):
+    date = forms.DateField(
+        label='Fecha',
+        widget=forms.DateInput(attrs={'class': 'datepicker', 'autocomplete': 'off'}),
+    )
     class Meta:
         model = Appointment
         fields = '__all__'
